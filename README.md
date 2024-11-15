@@ -57,6 +57,10 @@ Neuro-Stress-Monitor/
 ```
 pip install -r requirements.txt
 ```
+Make sure you’ve downloaded ChromeDriver:
+	•	Go [to ChromeDriver](https://developer.chrome.com/docs/chromedriver/downloads) Downloads.
+	•	Download the version that matches your Chrome browser version (check chrome://settings/help in Chrome for the version).
+	•	Extract the ChromeDriver executable.
 
 ## 👨‍👧‍👧 Team
 
