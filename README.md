@@ -40,7 +40,7 @@ See our devpost [Neuro Stress Monitor](https://devpost.com/software/neuro-stress
 
 ### Hardware
 
-* Muse 2
+* Neuro EXG pill
 
 # FILE STRUCTURE
 ```
