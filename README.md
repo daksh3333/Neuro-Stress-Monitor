@@ -68,6 +68,8 @@ Neuro-Stress-Monitor/
 ```
 pip install -r requirements.txt
 python3 youtube-nav.py (for now it this is the command)
+npm install dotenv
+
 ```
 Make sure you’ve downloaded ChromeDriver:
 *  Go [to ChromeDriver](https://developer.chrome.com/docs/chromedriver/downloads) Downloads.
@@ -89,7 +91,6 @@ Make sure you’ve downloaded ChromeDriver:
 ## 📰 Notes
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-# npm install dotenv
 
 * Use your own branch and pull request to main
 
