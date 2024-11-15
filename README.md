@@ -60,7 +60,7 @@ Neuro-Stress-Monitor/
 
 <!--- put your links here --->
 
-* [Avery] - Computer engineer
+* [Avery Bettesworth] - Computer engineer
 * [Daksh Sethi](https://github.com/daksh3333) - Software engineer
 * [Hasan Khan](https://osu.github.io/portfolio/) - Computer Scientist
 * [Hassan Farooq Mohammed ](https://github.com/osu) - Computer Scientist
