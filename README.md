@@ -45,6 +45,7 @@ See our devpost [Neuro Stress Monitor](https://devpost.com/software/neuro-stress
 # FILE STRUCTURE
 ```
 Neuro-Stress-Monitor/
+├──.gitignore
 ├── .env                # Environment variables (API keys, secrets, etc.)
 ├── stress_monitor.py   # Main Python script for monitoring stress
 ├── README.md           # Documentation for the project
