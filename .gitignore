@@ -1,0 +1,29 @@
+# Node.js dependencies
+node_modules/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+
+# Editor settings
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Electron build artifacts
+dist/
+out/
+
+# Other generated files
+package-lock.json
