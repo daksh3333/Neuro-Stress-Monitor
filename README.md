@@ -23,7 +23,7 @@ See our devpost [Neuro Stress Monitor](https://devpost.com/software/neuro-stress
 
 ## Development Timeline
 ### November 14
-- **Daksh**
+- **Daksh, and Hasan**
   - Started laying the groundwork for the project
 
 
