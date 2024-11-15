@@ -54,7 +54,9 @@ Neuro-Stress-Monitor/
 ```
 
 ## Code execution guide
-
+```
+pip install -r requirements.txt
+```
 
 ## 👨‍👧‍👧 Team
 
