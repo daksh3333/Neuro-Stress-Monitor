@@ -1,26 +1,38 @@
-#Analyze user data and detect stress patterns using BCI input or user logs. This module could handle the logic for analyzing brainwave data if connected to BCI, process mood entries, or detect trends
-def analyze_stress(data):
-    #assess stress from data
-    pass
-
-from muselsl import stream, list_muses, view
+from muselsl import stream, list_muses
 import numpy as np
+import time
 
 def detect_stress():
-    # Connect to the Muse headband
+    """
+    Connects to the Muse headband, streams EEG data, and calculates stress levels.
+    """
+    # List available Muse devices
     muses = list_muses()
     if muses:
         print(f"Connecting to Muse: {muses[0]['name']}")
-        stream(address=muses[0]['address'])  # Begin streaming from Muse device
+        
+        # Start streaming from the first available Muse device
+        stream(address=muses[0]['address'])
 
-        # Collect and analyze brainwave data here
-        # Placeholder: return a value based on sample EEG data
-        # Use EEG bands (alpha, beta, etc.) to determine stress
-        alpha, beta = np.random.random(), np.random.random()  # Sample data; replace with real analysis
+        # Wait a few seconds for data collection to stabilize
+        time.sleep(5)
 
-        # Simple threshold-based example:
-        stress_level = beta / alpha if alpha != 0 else 0  # Ratio indicative of stress
+        # Placeholder for EEG data processing
+        # In reality, you would collect EEG data samples for analysis here
+        # For demonstration purposes, simulate brainwave ratios
+        alpha = np.random.uniform(0.5, 1.5)  # Simulated alpha brainwave value
+        beta = np.random.uniform(0.1, 0.8)  # Simulated beta brainwave value
+        
+        if alpha != 0:
+            # Stress level as the ratio of beta to alpha waves
+            stress_level = beta / alpha
+        else:
+            stress_level = 0
+
+        # Print stress level (for debugging)
+        print(f"Detected stress level: {stress_level}")
+
         return stress_level
     else:
         print("No Muse devices found.")
-        return 0  # Default value when no device is connected
+        return 0  # Default value if no Muse device is available
