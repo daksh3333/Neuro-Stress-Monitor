@@ -25,7 +25,9 @@ See our devpost [Neuro Stress Monitor](https://devpost.com/software/neuro-stress
 ### November 14
 - **Daksh, and Hasan**
   - Started laying the groundwork for the project
-
+### November 15
+- **Hasan**
+  - Implemented barebones feature of the youtube selenium script to autoskip videos (Next step is to implement exg pill data for the skipping
 
 
 ## 🔨 Tools
