@@ -56,6 +56,7 @@ Neuro-Stress-Monitor/
 ## Code execution guide
 ```
 pip install -r requirements.txt
+python3 youtube-nav.py (for now it this is the command)
 ```
 Make sure you’ve downloaded ChromeDriver:
 *  Go [to ChromeDriver](https://developer.chrome.com/docs/chromedriver/downloads) Downloads.
