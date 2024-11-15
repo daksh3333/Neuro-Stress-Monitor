@@ -89,6 +89,7 @@ Make sure you’ve downloaded ChromeDriver:
 ## 📰 Notes
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+# npm install dotenv
 
 * Use your own branch and pull request to main
 
