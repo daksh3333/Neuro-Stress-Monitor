@@ -43,13 +43,14 @@ See our devpost [Neuro Stress Monitor](https://devpost.com/software/neuro-stress
 # FILE STRUCTURE
 ```
 Neuro-Stress-Monitor/
-├── 
-├── main.py
+├── .env
+├── stress_monitor.py
 ├── README.md
 ├── requirements.txt
+├── database.py
 ├── backend/
 │   ├── __init__.py
-|   ├── screen.py
+|   ├── backend.py
 ```
 
 ## Code execution guide
