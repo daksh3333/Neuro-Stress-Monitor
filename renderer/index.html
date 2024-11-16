@@ -3,35 +3,30 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+        style-src 'self' 'unsafe-inline';
+    ">
     <title>Neuro Stress Monitor</title>
+
+    <!-- External Styles -->
+    <link rel="stylesheet" href="renderer/styles.css">
+
+    <!-- Include Date Adapter for Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    
     <!-- Include Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-      }
-
-      h1 {
-        margin-top: 20px;
-      }
-
-      canvas {
-        margin-top: 20px;
-      }
-    </style>
   </head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline';">
   <body>
     <h1>Welcome to Neuro Stress Monitor</h1>
     <p>Visualizing real-time brain signal data.</p>
+
     <!-- Chart Container -->
     <canvas id="stressChart" width="800" height="400"></canvas>
+
     <!-- Include Renderer Script -->
-    <script src="index.js"></script>
+    <script type="module" src="renderer/index.js"></script>
   </body>
 </html>
-
-  
