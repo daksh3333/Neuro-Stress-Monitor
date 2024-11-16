@@ -7,6 +7,7 @@ def write_read(x):
 	data = arduino.readline() 
 	return data 
 while True: 
-	num = 4 #input("Enter a number: ") # Taking input from user 
-	value = write_read(num) 
-	print(value) # printing the value
+	num = 1 
+	value = write_read(num)
+	output = int(value.decode('utf-8').strip()) 
+	print(output) # printing the output
