@@ -10,10 +10,15 @@ See our devpost [Neuro Stress Monitor](https://devpost.com/software/neuro-stress
 
 **Neuro Stress Monitor** 
 
+**Neuro Stress Monitor** is a real-time stress monitoring and visualization tool that uses the BioAmp EXG Pill and Arduino to capture brain signals and visualize them in an Electron-based application.
+
 
 
 ## ✨ About
-
+- **Real-time visualization** of brain signals.
+- **Notifications** when stress levels exceed predefined thresholds.
+- **Sound alerts** for real-time stress warnings.
+- Integration of hardware and software to promote better stress management.
 
 
 
@@ -28,6 +33,11 @@ See our devpost [Neuro Stress Monitor](https://devpost.com/software/neuro-stress
 ### November 15
 - **Hasan**
   - Implemented barebones feature of the youtube selenium script to autoskip videos (Next step is to implement exg pill data for the skipping
+- **Daksh**
+  - Set up the elctron app by creating the renderer files: index(html/js), preload.js, styles.css. Also updated the package.json file and cleaned up other files
+  - Dealt with troubleshooting and refinements, fixed GPU crashes through disabling GPU rendering. Debugged other issues so that the window would open properly. Resolved through developing a gitignore file. 
+  - Tested window using mock data, used to test real-time visualization of the app. Refined the chart code for better visuals. 
+  - Improved other aspects of the project like helping with the arduino data processing, communicating aspects with teamates, cleaned and set up README.md with better setup instructions, and developed how to prompt notifications. 
 
 
 ## 🔨 Tools
@@ -36,11 +46,14 @@ See our devpost [Neuro Stress Monitor](https://devpost.com/software/neuro-stress
 
 * [Brainflow](https://brainflow.org/)
 * [GitHub](https://www.github.com) - version control + project manager
+* [Chart.js](https://www.chartjs.org/) - for real-time charting
+* [Electron.js](https://www.electronjs.org/) - for cross-platform desktop app development
 
 
 ### Hardware
 
 * Neuro EXG pill
+* Arduino
 
 # FILE STRUCTURE
 ```
@@ -82,7 +95,7 @@ Make sure you’ve downloaded ChromeDriver:
 
 <!--- put your links here --->
 
-* [Avery Bettesworth] - Computer engineer
+* [Avery Bettesworth](https://github.com/Betts6430) - Computer engineer
 * [Daksh Sethi](https://github.com/daksh3333) - Software engineer
 * [Hasan Khan](https://osu.github.io/portfolio/) - Computer Scientist and Psychologist 
 * [Hassan Farooq Mohammed ](https://github.com/osu) - Computer Scientist

@@ -3,6 +3,9 @@ import 'chartjs-adapter-date-fns';
 const canvasElement = document.getElementById('stressChart');
 const ctx = canvasElement.getContext('2d');
 
+// Threshold for stress
+let stressThreshold = 80;
+
 const stressChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -17,6 +20,24 @@ const stressChart = new Chart(ctx, {
         }],
     },
     options: {
+        plugins: {
+            annotation: {
+                annotations: {
+                    thresholdLine: {
+                        type: 'line',
+                        yMin: stressThreshold,
+                        yMax: stressThreshold,
+                        borderColor: 'red',
+                        borderWidth: 2,
+                        label: {
+                            content: 'Stress Threshold',
+                            enabled: true,
+                            position: 'end',
+                        }
+                    }
+                }
+            }
+        },
         scales: {
             x: {
                 type: 'time',
@@ -39,9 +60,19 @@ const stressChart = new Chart(ctx, {
     },
 });
 
+function playAlertSound() {
+    const audio = new Audio('alert.mp3'); // Ensure alert.mp3 is in the project directory
+    audio.play();
+}
+
 function generateMockData() {
     const timestamp = new Date();
     const signalValue = Math.random() * 100;
+
+    if (signalValue > stressThreshold) {
+        showNotification(`Stress detected! Level: ${signalValue}`);
+        playAlertSound();
+    }
 
     stressChart.data.labels.push(timestamp);
     stressChart.data.datasets[0].data.push(signalValue);
@@ -54,11 +85,5 @@ function generateMockData() {
     stressChart.update();
 }
 
-for (let i = 0; i < 10; i++) {
-    const timestamp = new Date(Date.now() - (10 - i) * 1000);
-    const signalValue = Math.random() * 100;
-    stressChart.data.labels.push(timestamp);
-    stressChart.data.datasets[0].data.push(signalValue);
-}
-
+// Simulate data updates
 setInterval(generateMockData, 1000);
