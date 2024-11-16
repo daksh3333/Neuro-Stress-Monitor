@@ -52,7 +52,7 @@ See our devpost [Neuro Stress Monitor](https://devpost.com/software/neuro-stress
 
 ### Hardware
 
-* Neuro EXG pill
+* Bioamp EXG pill
 * Arduino
 
 # FILE STRUCTURE
