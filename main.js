@@ -27,7 +27,11 @@ function createWindow() {
         },
     });
 
+    // Load the renderer's HTML file
     win.loadFile(path.join(__dirname, 'renderer/index.html'));
+
+    // Uncomment for debugging during development
+    // win.webContents.openDevTools();
 }
 
 // IPC handler for notifications
@@ -69,7 +73,7 @@ io.on('connection', (socket) => {
         });
     });
 
-    // Listen for threshold updates
+    // Receive threshold updates from the backend
     socket.on('update_threshold', (threshold) => {
         console.log('Received threshold update:', threshold);
 
@@ -97,6 +101,30 @@ app.whenReady().then(() => {
             createWindow();
         }
     });
+});
+
+// Handle IPC notifications
+ipcMain.on('send-notification', (event, message) => {
+    const notification = new BrowserWindow({
+        width: 300,
+        height: 100,
+        frame: false,
+        alwaysOnTop: true,
+        webPreferences: {
+            contextIsolation: true,
+        },
+    });
+
+    notification.loadURL(
+        `data:text/html;charset=utf-8,
+        <html>
+            <body style="margin:0;padding:0;display:flex;align-items:center;justify-content:center;background-color:white;font-family:Arial;">
+                <h2>${message}</h2>
+            </body>
+        </html>`
+    );
+
+    setTimeout(() => notification.close(), 5000); // Auto-close after 5 seconds
 });
 
 // Quit the app when all windows are closed (except on macOS)
