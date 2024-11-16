@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neuro Stress Monitor</title>
+
+    <!-- Include Chart.js and Adapter -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+
+
     <style>
       body {
         font-family: Arial, sans-serif;
         text-align: center;
         margin: 0;
-        padding: 0;
+        padding: 20px;
+        background-color: #121212;
+        color: white;
+      }
+
+      h1 {
+        margin-top: 20px;
+        font-size: 2em;
+        color: whitesmoke;
       }
 
       canvas {
@@ -19,8 +31,9 @@
         margin: 20px auto;
         width: 800px;
         height: 400px;
-        border: 1px solid #ddd;
-        background-color: #f8f9fa;
+        border: 1px solid #62585848;
+        background-color: black;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       }
     </style>
   </head>

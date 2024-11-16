@@ -1,24 +1,22 @@
 import 'chartjs-adapter-date-fns';
 
-// Get the canvas element for the chart
-const canvasElement = document.getElementById('stressChart');
-const ctx = canvasElement.getContext('2d');
-
-// Threshold for stress
-let stressThreshold = 80;
+// Initialize global variables
+let stressThreshold = 80; // Default threshold (updated dynamically)
+const canvasElement = document.getElementById('stressChart'); // Chart canvas element
+const ctx = canvasElement.getContext('2d'); // Canvas rendering context
 
 // Initialize the Chart.js chart
 const stressChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: [], // Timestamps
+        labels: [], // X-axis timestamps
         datasets: [{
             label: 'Brain Signals',
-            data: [], // Signal values
+            data: [], // Y-axis signal values
             borderColor: 'rgba(75, 192, 192, 1)',
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderWidth: 1,
-            tension: 0.1,
+            tension: 0.2, // Slight smoothing of the line
         }],
     },
     options: {
@@ -32,9 +30,10 @@ const stressChart = new Chart(ctx, {
                         borderColor: 'red',
                         borderWidth: 2,
                         label: {
-                            content: 'Stress Threshold',
+                            content: `Stress Threshold: ${stressThreshold}`,
                             enabled: true,
                             position: 'end',
+                            backgroundColor: 'rgba(255,0,0,0.1)', // Subtle background for visibility
                         }
                     }
                 }
@@ -45,10 +44,14 @@ const stressChart = new Chart(ctx, {
                 type: 'time',
                 time: {
                     unit: 'second',
+                    displayFormats: {
+                        second: 'HH:mm:ss', // Format for better clarity
+                    },
                 },
                 title: {
                     display: true,
                     text: 'Time',
+                    color: '#FFFFFF',
                 },
             },
             y: {
@@ -56,69 +59,84 @@ const stressChart = new Chart(ctx, {
                 title: {
                     display: true,
                     text: 'Signal Intensity',
+                    color: '#FFFFFF',
                 },
             },
         },
     },
 });
 
+// Function to update the stress threshold dynamically
+function updateStressThreshold(newThreshold) {
+    stressThreshold = newThreshold;
+
+    // Update the chart's annotation to reflect the new threshold
+    stressChart.options.plugins.annotation.annotations.thresholdLine.yMin = newThreshold;
+    stressChart.options.plugins.annotation.annotations.thresholdLine.yMax = newThreshold;
+    stressChart.options.plugins.annotation.annotations.thresholdLine.label.content = `Stress Threshold: ${newThreshold}`;
+    stressChart.update();
+}
+
 // Function to show a notification when stress is detected
 function showNotification(message) {
     const notification = document.createElement('div');
     notification.textContent = message;
-    notification.style.position = 'fixed';
-    notification.style.bottom = '20px';
-    notification.style.right = '20px';
-    notification.style.backgroundColor = 'red';
-    notification.style.color = 'white';
-    notification.style.padding = '10px 20px';
-    notification.style.borderRadius = '5px';
-    notification.style.fontWeight = 'bold';
-    notification.style.zIndex = '1000';
+    Object.assign(notification.style, {
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        backgroundColor: 'red',
+        color: 'white',
+        padding: '10px 20px',
+        borderRadius: '5px',
+        fontWeight: 'bold',
+        zIndex: 1000,
+    });
 
     document.body.appendChild(notification);
-
-    setTimeout(() => {
-        notification.remove();
-    }, 5000);
+    setTimeout(() => notification.remove(), 5000); // Remove notification after 5 seconds
 }
 
-// Function to play an alert sound when stress is detected
+// Function to play a sound alert
 function playAlertSound() {
-    const audio = new Audio('alert.mp3'); // Ensure alert.mp3 is in the project directory
+    const audio = new Audio('alert.mp3'); // Ensure alert.mp3 is in the same directory
     audio.play();
 }
 
-// Connect to the Socket.IO server
-const socket = io('http://localhost:5001');
-
-// Log when connected to the server
-socket.on('connect', function () {
-    console.log('Connected to server');
-});
-
-// Receive data from the server and update the chart
-socket.on('arduino_data', function (data) {
+// Listen for Arduino data via ipcRenderer
+window.ipcRenderer.on('arduino-data', (event, data) => {
     console.log('Received data:', data);
-    const signalValue = parseInt(data, 10); // Parse the signal value as an integer
-    const timestamp = new Date(); // Get the current time for the x-axis
 
-    // Add the signal value and timestamp to the chart
+    const signalValue = parseInt(data, 10);
+    if (isNaN(signalValue)) {
+        console.error("Invalid data received:", data);
+        return;
+    }
+
+    const timestamp = new Date(); // Current timestamp
+
+    // Update the chart with new data
     stressChart.data.labels.push(timestamp);
     stressChart.data.datasets[0].data.push(signalValue);
 
-    // Remove old data points to keep the chart manageable
+    // Keep the chart manageable by removing old data
     if (stressChart.data.labels.length > 50) {
         stressChart.data.labels.shift();
         stressChart.data.datasets[0].data.shift();
     }
 
-    // Update the chart
+    // Refresh the chart
     stressChart.update();
 
-    // Trigger notification and sound if the signal exceeds the threshold
+    // Trigger alerts automatically if the signal exceeds the threshold
     if (signalValue > stressThreshold) {
         showNotification(`Stress detected! Level: ${signalValue}`);
         playAlertSound();
     }
+});
+
+// Listen for threshold updates via ipcRenderer
+window.ipcRenderer.on('update-threshold', (event, threshold) => {
+    console.log('Updated stress threshold:', threshold);
+    updateStressThreshold(threshold);
 });
