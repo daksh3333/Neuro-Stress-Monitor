@@ -12,9 +12,9 @@ h1 {
 canvas {
     display: block;
     margin: 20px auto;
-    background-color: lightblue; /* Temporary debug color */
-    border: 2px solid red; /* Debug border */
+    background-color: white; /* Final background */
+    border: 1px solid #ccc; /* Subtle border */
     width: 800px;
     height: 400px;
-
 }
+
