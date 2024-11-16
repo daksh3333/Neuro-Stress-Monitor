@@ -12,7 +12,9 @@ h1 {
 canvas {
     display: block;
     margin: 20px auto;
-    background-color: #0569cd; /* Light background for better visibility */
-    border: 1px solid #c80606;
+    background-color: lightblue; /* Temporary debug color */
+    border: 2px solid red; /* Debug border */
+    width: 800px;
+    height: 400px;
 
 }
