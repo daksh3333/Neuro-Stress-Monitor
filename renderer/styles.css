@@ -12,8 +12,8 @@ h1 {
 canvas {
     display: block;
     margin: 20px auto;
-    background-color: white; /* Final background */
-    border: 1px solid #ccc; /* Subtle border */
+    background-color: black; /* Final background */
+    border: 1px solid #ff0000; /* Subtle border */
     width: 800px;
     height: 400px;
 }
