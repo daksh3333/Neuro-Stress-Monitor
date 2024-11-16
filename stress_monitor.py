@@ -12,8 +12,6 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 arduino = serial.Serial(port='COM3', baudrate=115200, timeout=2) 
 
 def write_read(): 
-	# arduino.write(bytes(x, 'utf-8')) 
-	# time.sleep(0.05) 
 	while True:
 		try:
 			data = arduino.readline() 
