@@ -3,7 +3,7 @@ const path = require('path');
 const { Server } = require('socket.io');
 const { createServer } = require('http');
 
-// Disable GPU rendering for compatibility
+// Disable GPU rendering
 app.commandLine.appendSwitch('disable-gpu');
 app.disableHardwareAcceleration();
 
@@ -22,22 +22,49 @@ function createWindow() {
         height: 600,
         webPreferences: {
             preload: path.join(__dirname, 'renderer/preload.js'),
-            nodeIntegration: false, // Prevent Node.js access in renderer
-            contextIsolation: true, // Enforce secure isolation
+            nodeIntegration: false,
+            contextIsolation: true,
         },
     });
 
     win.loadFile(path.join(__dirname, 'renderer/index.html'));
 }
 
-// Handle WebSocket events for real-time data
-io.on('connection', (socket) => {
-    console.log('A client connected to the WebSocket server.');
+// IPC handler for notifications
+ipcMain.on('send-notification', (event, message) => {
+    const notification = new BrowserWindow({
+        width: 300,
+        height: 100,
+        frame: false,
+        alwaysOnTop: true,
+        webPreferences: {
+            contextIsolation: true,
+        },
+    });
 
-    // Receive Arduino data from the backend and send it to the renderer
+    notification.loadURL(
+        `data:text/html;charset=utf-8,
+        <html>
+            <body style="margin:0;padding:0;display:flex;align-items:center;justify-content:center;background-color:white;font-family:Arial;">
+                <h2>${message}</h2>
+            </body>
+        </html>`
+    );
+
+    setTimeout(() => notification.close(), 5000); // Close the notification after 5 seconds
+});
+
+
+// WebSocket integration for real-time data
+io.on('connection', (socket) => {
+    console.log('A client connected.');
+
+    // Listen for Arduino data from the backend
     socket.on('arduino_data', (data) => {
         console.log('Received data from backend:', data);
-        BrowserWindow.getAllWindows().forEach((win) => {
+
+        // Emit the data to the renderer process
+        BrowserWindow.getAllWindows().forEach(win => {
             win.webContents.send('arduino-data', data);
         });
     });
@@ -45,20 +72,22 @@ io.on('connection', (socket) => {
     // Listen for threshold updates
     socket.on('update_threshold', (threshold) => {
         console.log('Received threshold update:', threshold);
-        BrowserWindow.getAllWindows().forEach((win) => {
+
+        // Emit the threshold update to the renderer process
+        BrowserWindow.getAllWindows().forEach(win => {
             win.webContents.send('update-threshold', threshold);
         });
     });
 
     socket.on('disconnect', () => {
-        console.log('A client disconnected from the WebSocket server.');
+        console.log('Client disconnected.');
     });
 });
 
-// Start the WebSocket server when the app is ready
+// Start the WebSocket server
 app.whenReady().then(() => {
     httpServer.listen(5001, () => {
-        console.log('WebSocket server is running on port 5001.');
+        console.log('WebSocket server listening on port 5001');
     });
 
     createWindow();
