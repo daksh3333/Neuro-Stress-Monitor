@@ -5,26 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+        script-src 'self' https://cdn.jsdelivr.net https://cdn.socket.io 'unsafe-inline';
         style-src 'self' 'unsafe-inline';
+        connect-src 'self' ws://localhost:5001 http://localhost:5001;
     ">
     <title>Neuro Stress Monitor</title>
 
     <!-- External Styles -->
     <link rel="stylesheet" href="styles.css">
-
-    <!-- Include Date Adapter for Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-    
-    <!-- Include Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <h1>Welcome to Neuro Stress Monitor</h1>
     <p>Visualizing real-time brain signal data.</p>
 
     <!-- Chart Container -->
-    <canvas id="stressChart" width="800" height="400"></canvas>
+    <!-- <canvas id="stressChart" width="800" height="400"></canvas> -->
+    <!-- Include Socket.IO client -->
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script> <!-- Correct version -->
 
     <!-- Include Renderer Script -->
     <script type="module" src="index.js"></script>
