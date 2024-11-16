@@ -10,5 +10,9 @@ h1 {
 }
 
 canvas {
-    margin-top: 20px;
+    display: block;
+    margin: 20px auto;
+    background-color: #0569cd; /* Light background for better visibility */
+    border: 1px solid #c80606;
+
 }

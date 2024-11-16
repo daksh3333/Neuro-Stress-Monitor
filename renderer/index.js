@@ -56,4 +56,14 @@ function generateMockData() {
     stressChart.update();
 }
 
-setInterval(generateMockData, 1000);  // Generate mock data every second
+// Add some initial mock data to fill the chart when it loads
+for (let i = 0; i < 10; i++) {
+    const timestamp = new Date(Date.now() - (10 - i) * 1000);  // 10 seconds ago
+    const signalValue = Math.random() * 100;
+
+    stressChart.data.labels.push(timestamp);
+    stressChart.data.datasets[0].data.push(signalValue);
+}
+
+// Generate new mock data every second
+setInterval(generateMockData, 1000);

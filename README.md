@@ -57,6 +57,7 @@ Neuro-Stress-Monitor/
 ├── main.js               # Entry point for the Electron app
 ├── renderer/             # Renderer process for the Electron app
 │   ├── index.html        # Frontend for the Electron app
+    ├── styles.css
     ├── preload.js        # Preload script for secure communication
 │   └── index.js         # Script to handle real-time visualization
 ├── package.json          # Node.js configuration and dependencies
