@@ -23,13 +23,14 @@
       }
     </style>
   </head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline';">
   <body>
     <h1>Welcome to Neuro Stress Monitor</h1>
     <p>Visualizing real-time brain signal data.</p>
     <!-- Chart Container -->
     <canvas id="stressChart" width="800" height="400"></canvas>
     <!-- Include Renderer Script -->
-    <script src="renderer/index.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
 

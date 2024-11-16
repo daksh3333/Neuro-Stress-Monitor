@@ -6,7 +6,8 @@
         "start": "electron ."
     },
     "dependencies": {
-        "chart.js": "^4.4.6"
+        "chart.js": "^4.4.6",
+        "chartjs-adapter-date-fns": "^3.0.0"
     },
     "devDependencies": {
         "electron": "^27.0.0"
