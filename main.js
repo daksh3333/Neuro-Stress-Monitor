@@ -4,6 +4,9 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
+app.commandLine.appendSwitch('disable-gpu');// Fix GPU error
+app.disableHardwareAcceleration(); // Fix GPU error
+
 /**
  * Creates the main application window.
  * Loads the index.html page and opens the developer tools.

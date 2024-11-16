@@ -15,21 +15,10 @@ const stressChart = new Chart(ctx, {
     },
     options: {
         scales: {
-            x: {
-                type: 'time',
-                time: {
-                    unit: 'second'
-                }
-            },
-            y: {
-                beginAtZero: true,
-                title: {
-                    display: true,
-                    text: 'Signal Intensity'
-                }
-            }
-        }
-    }
+            x: { type: 'time', time: { unit: 'second' } },
+            y: { beginAtZero: true },
+        },
+    },
 });
 
 // Simulate data
@@ -53,3 +42,7 @@ function generateMockData() {
 
 // Simulate data every second
 setInterval(generateMockData, 1000);
+
+
+
+    
