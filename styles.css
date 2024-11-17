@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #1e1e1e; /* Dark background */
+    color: #f0f0f0; /* Light text */
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 2rem;
+    color: #f0f0f0;
+}
+
+canvas {
+    display: block;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    height: 400px;
+    background-color: #2e2e2e;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
