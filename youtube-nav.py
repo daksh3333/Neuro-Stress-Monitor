@@ -11,7 +11,7 @@ chrome_options.add_argument("--start-maximized")  # Start browser maximized
 chrome_options.add_argument("--disable-notifications")  # Disable native pop-ups
 
 # Path to your chromedriver executable
-chromedriver_path = "C:\\Users\\avery\\OneDrive\\Documents\\GitHub\\Neuro-Stress-Monitor\\chromedriver.exe"  # Update this with your chromedriver path
+chromedriver_path = "/Users/nothimofc/Documents/Neuro-Stress-Monitor/chromedriver"  # Update this with your chromedriver path
 
 # Initialize WebDriver
 service = Service(chromedriver_path)
@@ -26,32 +26,88 @@ file_path = os.path.join(os.path.dirname(__file__), "renderer", "file.txt")
 def show_browser_notification(driver, title, message):
     """
     Display a notification directly in the browser using the Notification API.
-    Falls back to `alert` if notifications are not supported or denied.
+    Falls back to a custom modal if notifications are not supported or denied.
+    Automatically closes the notification after 2 seconds.
     """
+    # Ensure title and message are properly escaped for JavaScript
+    import json
+    title_js = json.dumps(title)
+    message_js = json.dumps(message)
+
     script = f"""
-    if (typeof Notification !== "undefined") {{
-        if (Notification.permission === "granted") {{
-            var notification = new Notification("{title}", {{
-                body: "{message}",
-                icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"
-            }});
-        }} else if (Notification.permission !== "denied") {{
-            Notification.requestPermission().then(permission => {{
-                if (permission === "granted") {{
-                    var notification = new Notification("{title}", {{
-                        body: "{message}",
-                        icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"
-                    }});
-                }} else {{
-                    alert("{title}: {message}");
+    (function() {{
+        function createCustomModal(title, message) {{
+            // Check if the modal already exists
+            if (document.getElementById('custom-modal')) {{
+                document.getElementById('custom-modal').remove();
+            }}
+
+            // Create modal elements
+            var modal = document.createElement('div');
+            modal.id = 'custom-modal';
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            modal.style.display = 'flex';
+            modal.style.alignItems = 'center';
+            modal.style.justifyContent = 'center';
+            modal.style.zIndex = '9999';
+
+            var modalContent = document.createElement('div');
+            modalContent.style.backgroundColor = '#fff';
+            modalContent.style.padding = '20px';
+            modalContent.style.borderRadius = '5px';
+            modalContent.style.textAlign = 'center';
+            modalContent.style.maxWidth = '80%';
+
+            var modalTitle = document.createElement('h2');
+            modalTitle.innerText = title;
+
+            var modalMessage = document.createElement('p');
+            modalMessage.innerText = message;
+
+            modalContent.appendChild(modalTitle);
+            modalContent.appendChild(modalMessage);
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+
+            // Auto-close the modal after 2 seconds
+            setTimeout(function() {{
+                if (modal) {{
+                    modal.remove();
                 }}
-            }});
-        }} else {{
-            alert("{title}: {message}");
+            }}, 2000);
         }}
-    }} else {{
-        alert("{title}: {message}");
-    }}
+
+        if (typeof Notification !== "undefined") {{
+            if (Notification.permission === "granted") {{
+                var notification = new Notification({title_js}, {{
+                    body: {message_js},
+                    icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"
+                }});
+                setTimeout(function() {{ notification.close(); }}, 2000);
+            }} else if (Notification.permission !== "denied") {{
+                Notification.requestPermission().then(permission => {{
+                    if (permission === "granted") {{
+                        var notification = new Notification({title_js}, {{
+                            body: {message_js},
+                            icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"
+                        }});
+                        setTimeout(function() {{ notification.close(); }}, 2000);
+                    }} else {{
+                        createCustomModal({title_js}, {message_js});
+                    }}
+                }});
+            }} else {{
+                createCustomModal({title_js}, {message_js});
+            }}
+        }} else {{
+            createCustomModal({title_js}, {message_js});
+        }}
+    }})();
     """
     driver.execute_script(script)
 
@@ -82,27 +138,7 @@ try:
         driver.quit()
         exit()
 
-    # Step 3: Wait 10 seconds on the Shorts page
-    time.sleep(10)
-
-    # Step 4: Locate the "Next video" button and interact
-    try:
-        next_video_button = driver.find_element(By.CSS_SELECTOR, "button[aria-label='Next video']")
-
-        # Highlight the Next video button
-        driver.execute_script("arguments[0].style.border='3px solid red'", next_video_button)
-        print("Next video button highlighted.")
-
-        # Wait for 2 seconds
-        time.sleep(2)
-
-        # Click the Next video button
-        next_video_button.click()
-        print("Next video button clicked.")
-    except Exception as e:
-        print(f"Error locating or interacting with the Next video button: {e}")
-
-    # Step 5: Monitor "file.txt" every 10 seconds
+    # Step 3: Monitor "file.txt" every 10 seconds
     while True:
         time.sleep(10)  # Wait for 10 seconds
 
@@ -118,23 +154,38 @@ try:
         if status == "Focused":
             focused_count += 1
             unfocused_count = 0  # Reset unfocused count
-            if focused_count % 2 == 0:
+            if focused_count % 2 == 0:  # Trigger every 2nd "Focused"
                 # Show congratulatory notification
                 title = "Great Job!"
                 message = "Congratulations! You are being focused. Keep up the pace!"
                 show_browser_notification(driver, title, message)
+
         elif status == "Unfocused":
             unfocused_count += 1
             focused_count = 0  # Reset focused count
+
             if unfocused_count == 1:
-                # Show warning notification
-                title = "Attention!"
-                message = "You are not focused. The video will be closed soon if you do not focus."
-                show_browser_notification(driver, title, message)
+                # First "Unfocused": Click the Next video button
+                try:
+                    next_video_button = driver.find_element(By.CSS_SELECTOR, "button[aria-label='Next video']")
+                    next_video_button.click()
+                    print("Next video button clicked.")
+                except Exception as e:
+                    print(f"Error locating or interacting with the Next video button: {e}")
             elif unfocused_count == 2:
-                # Close the video/browser
-                print("Second 'Unfocused' detected. Closing the browser.")
+                # Second "Unfocused": Show a warning notification
+                title = "Attention!"
+                message = "You are not focused. Please refocus or the session will end soon."
+                show_browser_notification(driver, title, message)
+            elif unfocused_count == 3:
+                # Third "Unfocused": Show a final notification and close the browser
+                title = "Session Ended"
+                message = "You are not focused. Take a 5-10 minute break to re-energize!"
+                show_browser_notification(driver, title, message)
+                print("Closing the browser in 3 seconds.")
+                time.sleep(3)  # Wait before closing
                 break  # Exit the loop to close the browser
+
         else:
             print(f"Unrecognized status in file.txt: {status}")
 
