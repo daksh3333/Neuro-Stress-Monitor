@@ -55,7 +55,9 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
   - Continued work on backend in stress_monitor.py by filtering raw EEG data by changing data into frequency domain and using scipy module to implement a bandpass filter for beta waves (14-30 Hz).
   - Made a function to check if the incoming signals are in the beta range based on the beta wave power.
   - If 10% or more of the incoming signals, over the course of a minute, are OUTSIDE of the beta range, the subject is UNFOCUSED. Otherwise they are FOCUSED.
-  - stress_monitor.py prints if the subject is FOCUSED or UNFOCUSED as well as the percentage of how UNFOCUSED the subject is. Example output: Is Unfocused: False (True Percentage: 2.79%) 
+  - stress_monitor.py prints if the subject is FOCUSED or UNFOCUSED as well as the percentage of how UNFOCUSED the subject is. Example output:    Is Unfocused: False (True Percentage: 2.79%).
+  - Tested and adjusted frequency ranges to accurately describe the subjects focus ranges.
+  - 
 - **Daksh**
   - Set up push notifications and sound alerts in the Electron app. Implemented a system to dynamically display notifications for focus/unfocus states and integrated motivational quotes for repeated unfocused instances.
   - Refined notification aesthetics to match a neutral theme with a bring blue tone for alerts, ensuring a visually cohesive interface.
@@ -66,7 +68,6 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
   - Connected the frontend to the backend, establishing seamless communication between the Electron app and the Arduino hardware for real-time data visualization and monitoring.
   - Tested the Arduino integration, focusing on how it receives and processes signals for seamless communication with the Electron app.
   - Updated and cleaned up README.md, adding contributions, software dependencies, and enhanced setup instructions.
->>>>>>> 1505fde3e458ca282e232dc52cd842981e9e874d
 
 
 ## 🔨 Tools
