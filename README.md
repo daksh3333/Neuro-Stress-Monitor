@@ -52,7 +52,7 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
   - Enhanced the renderer functionality, modifying it to dynamically display the current state (e.g., "Current State: Focused/Unfocused") alongside real-time updates.
   - Debugged file read operations to ensure smooth integration with file.txt for displaying state changes accurately.
   - Improved the styles.css file to align the app's visual theme with a modern, neutral mode-inspired look while fine-tuning animations for notifications.
-  - Reverted multiple files to resolve issues during testing and switched the frontend framework from JavaScript to React, paving the way for a more modular and scalable codebase.
+  - Reverted multiple files to resolve issues during testing and switched the frontend framework from JavaScript to React, paving the way for a more modular and scalable codebase. But then reverted back into HTML, CSS, and JavaScript for a better connection with backend.  
   - Connected the frontend to the backend, establishing seamless communication between the Electron app and the Arduino hardware for real-time data visualization and monitoring.
   - Tested the Arduino integration, focusing on how it receives and processes signals for seamless communication with the Electron app.
   - Updated and cleaned up README.md, adding contributions, software dependencies, and enhanced setup instructions.
