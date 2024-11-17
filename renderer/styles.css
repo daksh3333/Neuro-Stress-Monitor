@@ -15,7 +15,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 20px;
-    color: #fffefe; 
+    color: rgb(56, 48, 48); 
     position: relative;
     background: none; 
 }
@@ -66,7 +66,7 @@ body {
     left: 50%;
     transform: translateX(-50%); /* Adjust for the container's width */
     display: flex;
-    gap: 10px;
+    gap: 50px;
 }
 
 #youtube-btn {
