@@ -1,2 +1,7 @@
 selenium>=4.0.0
-brainflow>=4.0.0
+serial
+numpy
+scipy.signal
+time
+electron
+arduino ide
