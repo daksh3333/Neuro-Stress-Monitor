@@ -1,9 +1,9 @@
+import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import time
-import os
 
 # Set up Chrome options
 chrome_options = Options()
@@ -20,6 +20,9 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 # Initialize counts
 focused_count = 0
 unfocused_count = 0
+
+# Path to the `file.txt`
+file_path = os.path.join(os.path.dirname(__file__), "renderer", "file.txt")
 
 def show_message_and_sound(driver, message, sound_url=None):
     script = f'''
@@ -104,7 +107,7 @@ try:
 
         # Read the content of "file.txt"
         try:
-            with open("file.txt", "r") as f:
+            with open(file_path, "r") as f:
                 status = f.read().strip()
                 print(f"Status read from file.txt: {status}")
         except Exception as e:
