@@ -12,7 +12,7 @@ chrome_options.add_argument("--start-maximized")  # Start browser maximized
 chrome_options.add_argument("--disable-notifications")  # Disable native pop-ups
 
 # Path to your chromedriver executable
-chromedriver_path = "/Users/nothimofc/Documents/Neuro-Stress-Monitor/chromedriver"  # Update this with your chromedriver path
+chromedriver_path = "C:\\Users\\avery\\OneDrive\\Documents\\GitHub\\Neuro-Stress-Monitor\\chromedriver.exe"  # Update this with your chromedriver path
 
 # Initialize WebDriver
 service = Service(chromedriver_path)
