@@ -67,20 +67,45 @@ canvas {
     }
 }
 
-/* Button styling */
-button {
-    background-color: #d4d636; /* Vibrant yellow for buttons */
-    color: #2c2d31; /* Dark background for text contrast */
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+.control-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Adjust for the container's width */
+    display: flex;
+    gap: 10px;
 }
 
-button:hover {
-    background-color: #b2b82a; /* Slightly darker yellow on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+#youtube-btn {
+    background-image: url('../yt-image.png'); /* Set the image as the background */
+    background-size: cover;      
+    background-position: center;     
+    background-repeat: no-repeat; 
+    border: none;                   
+    border-radius: 8px;              
+    width: 150px;                     
+    height: 40px;                  
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#youtube-btn:hover {
+    transform: scale(1.1);
+}
+
+#tiktok-btn {
+    background-image: url('../tk-image.png'); /* Set the image as the background */
+    background-size: cover;      
+    background-position: center;     
+    background-repeat: no-repeat; 
+    border: none;                   
+    border-radius: 8px;              
+    width: 150px;                     
+    height: 40px;                  
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#tiktok-btn:hover {
+    transform: scale(1.1);
 }
