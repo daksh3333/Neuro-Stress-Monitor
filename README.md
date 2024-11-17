@@ -72,6 +72,10 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
   - Incorporated a dynamic notification system that includes motivational quotes by David Goggins for repeated unfocused states, creating an engaging user experience.
   - Integrated video background functionality for a visually appealing application interface.
 
+## November 17
+- **Hasan**
+  - Synchronized the buttons in the electron app to execute the python scripts for youtube and tiktok
+  - Streamlined the UI of the app
 
 ## 🔨 Tools
 
