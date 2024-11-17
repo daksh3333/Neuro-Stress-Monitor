@@ -27,7 +27,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.8);
-    background-color: #F8485E; /* Bright cyan for notifications */
+    background-color: #c77f7f; /* Pastel Red for notifications */
     color: #EEEEEE; /* Light text for contrast */
     padding: 20px 40px;
     border-radius: 12px; /* Rounded corners for a modern look */
