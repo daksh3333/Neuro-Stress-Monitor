@@ -51,6 +51,7 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
 - **Hasan**
 <<<<<<< HEAD
   - Implemented reading EXG pill data to display notifications on chromium, decided by being focused or unfocused, and closing the page if the person remains unfocused
+  - Implemented focus features into youtube shorts and tiktok videos to show an example of our notification feature/data analysis
 - **Avery**
   - Continued work on backend in stress_monitor.py by filtering raw EEG data by changing data into frequency domain and using scipy module to implement a bandpass filter for beta waves (14-30 Hz).
   - Made a function to check if the incoming signals are in the beta range based on the beta wave power.
