@@ -117,8 +117,8 @@ Make sure you’ve downloaded ChromeDriver:
 * [Daksh Sethi](https://github.com/daksh3333) - Software engineer
 * [Hasan Khan](https://osu.github.io/portfolio/) - Computer Scientist and Psychology Student
 * [Hassan Farooq Mohammed ](https://github.com/osu) - Computer Scientist
-* [Tatjana Golovin] - Neuroscience Student
-* [Varinder Singh] - Psychology Student
+* [Tatjana Golovin](https://devpost.com/tatjana-golovin) - Neuroscience Student
+* [Varinder Singh](https://devpost.com/varinderjeetsingh311) - Psychology Student
 
 
 ## 📰 Notes
