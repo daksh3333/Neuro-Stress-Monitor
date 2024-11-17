@@ -67,9 +67,12 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
   - Debugged file read operations to ensure smooth integration with file.txt for displaying state changes accurately.
   - Improved the styles.css file to align the app's visual theme with a modern, neutral mode-inspired look while fine-tuning animations for notifications. Integrated video background functionality for a visually appealing application interface.
   - Reverted multiple files to resolve issues during testing and switched the frontend framework from JavaScript to React, paving the way for a more modular and scalable codebase. But then reverted back into HTML, CSS, and JavaScript for a better connection with backend.  
-  - Connected the frontend to the backend, establishing seamless communication between the Electron app and the Arduino hardware for real-time data visualization and monitoring.
+  - Connected the frontend to the backend, establishing seamless communication between the Electron app and the Arduino hardware for real-time data visualization and monitoring. Worked on integrating transitions between focus states.
+  - Designed better error-handling mechanisms for seamless data flow between hardware and software.
   - Tested the Arduino integration, focusing on how it receives and processes signals for seamless communication with the Electron app.
   - Updated and cleaned up README.md, adding contributions, software dependencies, and enhanced setup instructions.
+  - Refined and Advanced the UI enhancements.
+  - Developed and dine-tuned the connection between the Electron app and Arduino to minimize latency in real-time updates
   - Incorporated a dynamic notification system that includes motivational quotes by David Goggins for repeated unfocused states, creating an engaging user experience.
   - Integrated video background functionality for a visually appealing application interface.
 
@@ -77,6 +80,13 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
 - **Hasan**
   - Synchronized the buttons in the electron app to execute the python scripts for youtube and tiktok
   - Streamlined the UI of the app
+- **Avery and Daksh**
+  - Cleaned up files and refined certain aspects of the app.
+  - Recorded and edited final presentation video, ensuring a polished and professional overview of the project’s key features and functionality.
+  - Conducted final testing and debugging of both frontend and backend systems to ensure 
+seamless integration and reliable performance during the demonstration.
+  - Organized and streamlined the project repository, removing unnecessary files and updating documentation for clarity and future scalability.
+
 
 ## 🔨 Tools
 
@@ -190,7 +200,7 @@ Make sure you’ve downloaded ChromeDriver:
 
 * Use your own branch and pull request to main
 
-## Referrences
+## References
 
 * BioAmp EXG Pill Documentation (https://github.com/upsidedownlabs/BioAmp-EXG-Pill)
 * Serial communication between Python and Arduino (https://projecthub.arduino.cc/ansh2919/serial-communication-between-python-and-arduino-663756)
