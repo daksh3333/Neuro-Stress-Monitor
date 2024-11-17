@@ -1,73 +1,90 @@
 import serial
+import numpy as np
+from scipy.signal import butter, filtfilt
 import time
-from flask import Flask
-from flask_socketio import SocketIO
 
+# Serial connection
+arduino = serial.Serial(port='COM3', baudrate=115200, timeout=2)
 
-# Flask app setup
-app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*")
+# Constants
+SAMPLE_RATE = 512  # Hz
+BUFFER_SIZE = SAMPLE_RATE  # 1-second buffer
+BETA_LOW = 14  # Hz
+BETA_HIGH = 40  # Hz
+CHECK_INTERVAL = 10  # Seconds for output interval
+MIN_TRUE_PERCENTAGE = 0.1  # Minimum percentage of True signals to output True
+file_path = "renderer/file.txt"  # Update file path to match your Electron app structure
 
+# Butterworth bandpass filter for beta waves
+def butter_bandpass(lowcut, highcut, fs, order=4):
+    nyquist = 0.5 * fs
+    low = lowcut / nyquist
+    high = highcut / nyquist
+    b, a = butter(order, [low, high], btype='band')
+    return b, a
 
-# Arduino setup
-# Replace 'COM3' with the port where your Arduino is connected
-try:
-    arduino = serial.Serial(port='COM3', baudrate=115200, timeout=2)
-    print("Connected to Arduino on COM3")
-    use_arduino = True
-except Exception as e:
-    print(f"Arduino not found. Falling back to mock data. Error: {e}")
-    use_arduino = False
+def bandpass_filter(data, lowcut, highcut, fs, order=4):
+    b, a = butter_bandpass(lowcut, highcut, fs, order=order)
+    return filtfilt(b, a, data)
 
+# Determine if stressed based on beta wave power
+def is_brain_in_beta_region(data, lowcut, highcut, fs, threshold=0.5):
+    filtered_data = bandpass_filter(data, lowcut, highcut, fs)
+    power = np.mean(np.square(filtered_data))  # Compute signal power
+    return power >= threshold  # True if power is above threshold (in beta region)
 
-# Function to read data from Arduino
-def read_from_arduino():
+# Buffers for storing data and results
+data_buffer = []
+unfocused_results = []
+
+print("Monitoring brain waves...")
+
+# Track time for 10-second intervals
+start_time = time.time()
+while True:
     try:
-        data = arduino.readline().decode('utf-8').strip()
-        if data:
-            return int(data)
+        # Read raw data from Arduino
+        raw_data = arduino.readline().decode('utf-8').strip()
+        
+        # Check for valid data
+        if not raw_data.isdigit():
+            continue  # Skip invalid data
+        
+        sensor_value = int(raw_data)
+        
+        # Append data to the buffer
+        data_buffer.append(sensor_value)
+        
+        # Keep buffer size fixed
+        if len(data_buffer) > BUFFER_SIZE:
+            data_buffer.pop(0)
+        
+        # Process data when buffer is full
+        if len(data_buffer) == BUFFER_SIZE:
+            # Convert buffer to numpy array
+            data = np.array(data_buffer)
+            # Check if brain waves are in beta region
+            is_unfocused = not is_brain_in_beta_region(data, BETA_LOW, BETA_HIGH, SAMPLE_RATE)
+            # Append result to the unfocused results buffer
+            unfocused_results.append(is_unfocused)
+        
+        # Check every 10 seconds
+        if time.time() - start_time >= CHECK_INTERVAL:
+            # Calculate the percentage of True values in unfocused_results
+            true_percentage = sum(unfocused_results) / len(unfocused_results) if unfocused_results else 0
+            # Determine if unfocused based on the threshold
+            output_result = true_percentage >= MIN_TRUE_PERCENTAGE
+            print(f"Is Unfocused: {output_result} (True Percentage: {true_percentage:.2%})")
+            
+            # Write result to file
+            with open(file_path, "w") as file:
+                file.write("Unfocused" if output_result else "Focused")
+            
+            # Reset for the next interval
+            unfocused_results = []
+            start_time = time.time()
+    except KeyboardInterrupt:
+        print("Exiting...")
+        break
     except Exception as e:
-        print(f"Error reading from Arduino: {e}")
-    return None
-
-
-# Function to generate mock data
-def generate_mock_data():
-    import random
-    return random.randint(50, 120)
-
-
-# Background task for emitting data
-def emit_data():
-    while True:
-        try:
-            if use_arduino:
-                value = read_from_arduino()
-            else:
-                value = generate_mock_data()
-
-
-            if value is not None:
-                print(f"Emitting value: {value}")
-                socketio.emit('arduino_data', value)
-            time.sleep(0.5)  # Adjust the delay as needed
-        except Exception as e:
-            print(f"Error in emit_data loop: {e}")
-
-
-# WebSocket events
-@socketio.on('connect')
-def handle_connect():
-    print("Client connected")
-
-
-# HTTP route (optional, for debugging)
-@app.route('/')
-def index():
-    return "Stress Monitor Backend Running"
-
-
-# Start the background task and run the server
-if __name__ == '__main__':
-    socketio.start_background_task(emit_data)
-    socketio.run(app, host='0.0.0.0', port=5001)
+        print(f"Error: {e}")
