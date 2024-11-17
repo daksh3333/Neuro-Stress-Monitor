@@ -1,24 +1,25 @@
 
 <a name=top></a>
 ## NATHACKS
-# # Neuro Stress Monitor
+# # Neuro Focus Monitor
 
 
-See our devpost [Neuro Stress Monitor](https://devpost.com/software/neuro-stress-monitor)
+See our devpost [Neuro Focus Monitor](https://devpost.com/software/neuro-stress-monitor)
 
 ## 📑 Summary
 
-**Neuro Stress Monitor** 
+**Neuro Focus Monitor** 
 
-**Neuro Stress Monitor** is a real-time stress monitoring and visualization tool that uses the BioAmp EXG Pill and Arduino to capture brain signals and visualize them in an Electron-based application.
+**Neuro focus Monitor** is a real-time focus detection tool that uses the BioAmp EXG Pill and Arduino to capture brain signals and notify the user when they are focused in an Electron-based application.
 
 
 
 ## ✨ About
-- **Real-time visualization** of brain signals.
-- **Notifications** when stress levels exceed predefined thresholds.
-- **Sound alerts** for real-time stress warnings.
-- Integration of hardware and software to promote better stress management.
+- **Detection** Detects brain waves in eeg frequency range (0-50 Hz).
+- **Filtering** 
+- **Notifications** when focus levels exceed predefined thresholds.
+- **Sound alerts** for real-time focus warnings.
+- Integration of hardware and software to promote better focus management.
 
 
 
@@ -57,10 +58,10 @@ See our devpost [Neuro Stress Monitor](https://devpost.com/software/neuro-stress
 
 # FILE STRUCTURE
 ```
-Neuro-Stress-Monitor/
+Neuro-focus-Monitor/
 ├──.gitignore
 ├── .env                # Environment variables (API keys, secrets, etc.)
-├── stress_monitor.py   # Main Python script for monitoring stress
+├── stress_monitor.py   # Main Python script for monitoring focus
 ├── README.md           # Documentation for the project
 ├── requirements.txt    # Python dependencies for the backend
 ├── database.py         # Database management logic
