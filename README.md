@@ -1,8 +1,9 @@
 
 <a name=top></a>
 ## NATHACKS
-# # Focus Boost
+# # FocusBoost
 
+(https://cdn.discordapp.com/attachments/1300702618779127820/1307629123916791858/focusBoost_1.gif ex=673b0005&is=6739ae85&hm=cd470dc0e4a746ef9076d3caf40da08fb23645fdeab4bf69dba3f73a6043b4b4&)
 
 See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
 
