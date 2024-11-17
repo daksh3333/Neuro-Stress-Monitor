@@ -11,7 +11,7 @@ chrome_options.add_argument("--start-maximized")  # Start browser maximized
 chrome_options.add_argument("--disable-notifications")  # Disable native pop-ups
 
 # Path to your chromedriver executable
-chromedriver_path = "C:\\Users\\avery\\OneDrive\\Documents\\GitHub\\Neuro-Stress-Monitor\\chromedriver.exe"  # Update this with your chromedriver path
+chromedriver_path = "/Users/nothimofc/Documents/Neuro-Stress-Monitor/chromedriver"  # Update this with your chromedriver path
 
 # Initialize WebDriver
 service = Service(chromedriver_path)
@@ -82,27 +82,7 @@ try:
         driver.quit()
         exit()
 
-    # Step 3: Wait 10 seconds on the Shorts page
-    time.sleep(10)
-
-    # Step 4: Locate the "Next video" button and interact
-    try:
-        next_video_button = driver.find_element(By.CSS_SELECTOR, "button[aria-label='Next video']")
-
-        # Highlight the Next video button
-        driver.execute_script("arguments[0].style.border='3px solid red'", next_video_button)
-        print("Next video button highlighted.")
-
-        # Wait for 2 seconds
-        time.sleep(2)
-
-        # Click the Next video button
-        next_video_button.click()
-        print("Next video button clicked.")
-    except Exception as e:
-        print(f"Error locating or interacting with the Next video button: {e}")
-
-    # Step 5: Monitor "file.txt" every 10 seconds
+    # Step 3: Monitor "file.txt" every 10 seconds
     while True:
         time.sleep(10)  # Wait for 10 seconds
 
@@ -118,23 +98,38 @@ try:
         if status == "Focused":
             focused_count += 1
             unfocused_count = 0  # Reset unfocused count
-            if focused_count % 2 == 0:
+            if focused_count % 2 == 0:  # Trigger every 2nd "Focused"
                 # Show congratulatory notification
                 title = "Great Job!"
                 message = "Congratulations! You are being focused. Keep up the pace!"
                 show_browser_notification(driver, title, message)
+
         elif status == "Unfocused":
             unfocused_count += 1
             focused_count = 0  # Reset focused count
+
             if unfocused_count == 1:
-                # Show warning notification
-                title = "Attention!"
-                message = "You are not focused. The video will be closed soon if you do not focus."
-                show_browser_notification(driver, title, message)
+                # First "Unfocused": Click the Next video button
+                try:
+                    next_video_button = driver.find_element(By.CSS_SELECTOR, "button[aria-label='Next video']")
+                    next_video_button.click()
+                    print("Next video button clicked.")
+                except Exception as e:
+                    print(f"Error locating or interacting with the Next video button: {e}")
             elif unfocused_count == 2:
-                # Close the video/browser
-                print("Second 'Unfocused' detected. Closing the browser.")
+                # Second "Unfocused": Show a warning notification
+                title = "Attention!"
+                message = "You are not focused. Please refocus or the session will end soon."
+                show_browser_notification(driver, title, message)
+            elif unfocused_count == 3:
+                # Third "Unfocused": Show a final notification and close the browser
+                title = "Session Ended"
+                message = "You are not focused. Take a 5-10 minute break to re-energize!"
+                show_browser_notification(driver, title, message)
+                print("Closing the browser in 3 seconds.")
+                time.sleep(3)  # Wait before closing
                 break  # Exit the loop to close the browser
+
         else:
             print(f"Unrecognized status in file.txt: {status}")
 
