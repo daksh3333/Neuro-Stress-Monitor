@@ -28,6 +28,7 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
 
 ## 📷 Screenshots
 ![alt text](src/eeg-image.png)
+![alt text](src/focusboost.png)
 
 
 ## Development Timeline
