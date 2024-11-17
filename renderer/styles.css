@@ -3,8 +3,8 @@ body {
     text-align: center;
     margin: 0;
     padding: 20px;
-    background-color: #1e1e1e; 
-    color: #f0f0f0; 
+    background-color: #1e1e1e; /* Dark background */
+    color: #f0f0f0; /* Light text */
 }
 
 h1 {
@@ -13,64 +13,33 @@ h1 {
     color: #f0f0f0;
 }
 
-/* Subheading or descriptive text */
-p {
-    font-size: 1rem;
-    color: #cccccc; /* Soft gray for secondary text */
-    margin-bottom: 20px;
-}
-
 canvas {
     display: block;
     margin: 20px auto;
-    max-width: 90%;
-    height: auto;
-    border: 2px solid #606060; /* Dark gray border for subtle contrast */
-    background-color: #1e1e1e; /* Darker background to blend with the theme */
+    width: 90%;
+    max-width: 800px;
+    height: 400px;
+    background-color: #2e2e2e;
+    border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Adds depth to the chart */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
-/* Button Styling */
-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #383838; /* Dark gray for buttons */
-    color: #ffffff; /* White text for clarity */
-    border: 1px solid #606060; /* Border for definition */
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-button:hover {
-    background-color: #606060; /* Slightly lighter gray on hover */
-    color: #000000; /* Black text for contrast */
-}
-
-button:disabled {
-    background-color: #2e2e2e; /* Very dark gray for disabled state */
-    color: #707070; /* Muted gray text */
-    cursor: not-allowed;
-}
-
-/* Notifications Styling */
 .notification {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #ffffff; /* White background for notifications */
-    color: #121212; /* Black text for contrast */
+    background-color: white;
+    color: black;
     padding: 15px 20px;
     border-radius: 5px;
     font-weight: bold;
     font-size: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for elegance */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    animation: fadeIn 0.5s ease, fadeOut 0.5s ease 4.5s; /* Smooth appearance/disappearance */
+    animation: fadeIn 0.5s ease, fadeOut 0.5s ease 4.5s;
 }
 
-/* Notification Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
