@@ -14,7 +14,7 @@ chrome_options = Options()
 chrome_options.add_argument("--disable-notifications")  # Disable native pop-ups
 
 # Path to your chromedriver executable
-chromedriver_path = "/Users/nothimofc/Documents/Neuro-Stress-Monitor/chromedriver"  # Update this with your chromedriver path
+chromedriver_path = "/Users/hassanmohammed/Desktop/nathacks/Neuro-Stress-Monitor/chromedriver"  # Update this with your chromedriver path
 
 # Initialize WebDriver
 service = Service(chromedriver_path)

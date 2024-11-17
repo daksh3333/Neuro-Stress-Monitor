@@ -89,7 +89,7 @@ canvas {
 }
 
 #youtube-btn {
-    background-image: url('../yt-image.png'); /* Set the image as the background */
+    background-image: url('../src/yt-image.png'); /* Set the image as the background */
     background-size: cover;      
     background-position: center;     
     background-repeat: no-repeat; 
@@ -106,7 +106,7 @@ canvas {
 }
 
 #tiktok-btn {
-    background-image: url('../tk-image.png'); /* Set the image as the background */
+    background-image: url('../src/tk-image.png'); /* Set the image as the background */
     background-size: cover;      
     background-position: center;     
     background-repeat: no-repeat; 
