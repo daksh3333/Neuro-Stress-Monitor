@@ -56,8 +56,6 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
   - Made a function to check if the incoming signals are in the beta range based on the beta wave power.
   - If 10% or more of the incoming signals, over the course of a minute, are OUTSIDE of the beta range, the subject is UNFOCUSED. Otherwise they are FOCUSED.
   - stress_monitor.py prints if the subject is FOCUSED or UNFOCUSED as well as the percentage of how UNFOCUSED the subject is. Example output: Is Unfocused: False (True Percentage: 2.79%) 
-=======
-  - Implemented reading exg pill data to display notifications on chromium, decided by being focused or unfocused, and closing the page if the person remains unfocused
 - **Daksh**
   - Set up push notifications and sound alerts in the Electron app. Implemented a system to dynamically display notifications for focus/unfocus states and integrated motivational quotes for repeated unfocused instances.
   - Refined notification aesthetics to match a neutral theme with a bring blue tone for alerts, ensuring a visually cohesive interface.
