@@ -12,7 +12,8 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
 
 **FocusBoost** 
 
-**FocusBoost** is a real-time focus detection tool that uses the BioAmp EXG Pill and Arduino to capture brain signals and notify the user when they are focused in an Electron-based application, and chromium (for practical example like watching a youtube short).
+**FocusBoost** is a real-time focus detection tool that uses the BioAmp EXG Pill and Arduino to capture brain signals and notify the user when they are focused in an Electron-based application that monitors your focus levels in real-time using data from an Arduino. The application provides notifications and motivational alerts to help you maintain focus and productivity and over a chromium software (for practical example like watching a youtube short). 
+
 
 
 
@@ -48,12 +49,26 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
   - Wrote code to transfer raw EEG data to python stress_monitor.py using pyserial module.
 ## November 16
 - **Hasan**
+<<<<<<< HEAD
   - Implemented reading EXG pill data to display notifications on chromium, decided by being focused or unfocused, and closing the page if the person remains unfocused
 - **Avery**
   - Continued work on backend in stress_monitor.py by filtering raw EEG data by changing data into frequency domain and using scipy module to implement a bandpass filter for beta waves (14-30 Hz).
   - Made a function to check if the incoming signals are in the beta range based on the beta wave power.
   - If 10% or more of the incoming signals, over the course of a minute, are OUTSIDE of the beta range, the subject is UNFOCUSED. Otherwise they are FOCUSED.
   - stress_monitor.py prints if the subject is FOCUSED or UNFOCUSED as well as the percentage of how UNFOCUSED the subject is. Example output: Is Unfocused: False (True Percentage: 2.79%) 
+=======
+  - Implemented reading exg pill data to display notifications on chromium, decided by being focused or unfocused, and closing the page if the person remains unfocused
+- **Daksh**
+  - Set up push notifications and sound alerts in the Electron app. Implemented a system to dynamically display notifications for focus/unfocus states and integrated motivational quotes for repeated unfocused instances.
+  - Refined notification aesthetics to match a neutral theme with a bring blue tone for alerts, ensuring a visually cohesive interface.
+  - Enhanced the renderer functionality, modifying it to dynamically display the current state (e.g., "Current State: Focused/Unfocused") alongside real-time updates.
+  - Debugged file read operations to ensure smooth integration with file.txt for displaying state changes accurately.
+  - Improved the styles.css file to align the app's visual theme with a modern, neutral mode-inspired look while fine-tuning animations for notifications.
+  - Reverted multiple files to resolve issues during testing and switched the frontend framework from JavaScript to React, paving the way for a more modular and scalable codebase. But then reverted back into HTML, CSS, and JavaScript for a better connection with backend.  
+  - Connected the frontend to the backend, establishing seamless communication between the Electron app and the Arduino hardware for real-time data visualization and monitoring.
+  - Tested the Arduino integration, focusing on how it receives and processes signals for seamless communication with the Electron app.
+  - Updated and cleaned up README.md, adding contributions, software dependencies, and enhanced setup instructions.
+>>>>>>> 1505fde3e458ca282e232dc52cd842981e9e874d
 
 
 ## 🔨 Tools
@@ -80,8 +95,8 @@ The project uses the following Python libraries. Install them using `pip install
 
 ### Hardware
 
-* Bioamp EXG pill
-* Arduino
+* Bioamp EXG pill for biosignal capture
+* Arduino board
 
 # FILE STRUCTURE
 ```
@@ -127,8 +142,8 @@ Make sure you’ve downloaded ChromeDriver:
 
 <!--- put your links here --->
 
-* [Avery Bettesworth](https://github.com/Betts6430) - Computer engineering student
-* [Daksh Sethi](https://github.com/daksh3333) - Software engineering student
+* [Avery Bettesworth](https://github.com/Betts6430) - Computer Engineering Student
+* [Daksh Sethi](https://github.com/daksh3333) - Software Engineering Student
 * [Hasan Khan](https://osu.github.io/portfolio/) - Computer Scientist and Psychology Student
 * [Hassan Farooq Mohammed ](https://github.com/osu) - Computer Scientist
 * [Tatjana Golovin](https://devpost.com/tatjana-golovin) - Neuroscience Student
