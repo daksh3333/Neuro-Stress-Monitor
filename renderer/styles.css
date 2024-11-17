@@ -85,7 +85,7 @@ canvas {
     left: 50%;
     transform: translateX(-50%); /* Adjust for the container's width */
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 #youtube-btn {
