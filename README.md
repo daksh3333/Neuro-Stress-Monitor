@@ -41,10 +41,19 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
   - Dealt with troubleshooting and refinements, fixed GPU crashes through disabling GPU rendering. Debugged other issues so that the window would open properly. Resolved through developing a gitignore file. 
   - Tested window using mock data, used to test real-time visualization of the app. Refined the chart code for better visuals. 
   - Improved other aspects of the project like helping with the arduino data processing, communicating aspects with teamates, cleaned and set up README.md with better setup instructions, and developed how to prompt notifications.
-
+- **Avery**
+  - Connected BioAmp EXG Pill to Arduino to begin gathering brainwave signals. Wrote required code in Arduino IDE to begin the aquisition of data from the EXG Pill.
+  - Used byb spike recorder to test methods of recording signals to detect focus/stress. Decided on using the EXG as an EEG by connecting it to the forhead, targeting the frontal lobe. ECG data was simple to work with but not necessarily indicitave of focus/stress.
+  - Began serial plotting raw EEG data in Arduino IDE to visualize and confirm accuracy.
+  - Wrote code to transfer raw EEG data to python stress_monitor.py using pyserial module.
 ## November 16
 - **Hasan**
-  - Implemented reading exg pill data to display notifications on chromium, decided by being focused or unfocused, and closing the page if the person remains unfocused
+  - Implemented reading EXG pill data to display notifications on chromium, decided by being focused or unfocused, and closing the page if the person remains unfocused
+- **Avery**
+  - Continued work on backend in stress_monitor.py by filtering raw EEG data by changing data into frequency domain and using scipy module to implement a bandpass filter for beta waves (14-30 Hz).
+  - Made a function to check if the incoming signals are in the beta range based on the beta wave power.
+  - If 10% or more of the incoming signals, over the course of a minute, are OUTSIDE of the beta range, the subject is UNFOCUSED. Otherwise they are FOCUSED.
+  - stress_monitor.py prints if the subject is FOCUSED or UNFOCUSED as well as the percentage of how UNFOCUSED the subject is. Example output: Is Unfocused: False (True Percentage: 2.79%) 
 
 
 ## 🔨 Tools
