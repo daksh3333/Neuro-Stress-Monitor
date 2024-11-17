@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Resolve file path relative to the project root
-const filePath = path.join(__dirname, '../file.txt'); // Go one directory up to find file.txt
+const filePath = path.join(__dirname, '/file.txt'); // Go one directory up to find file.txt
 
 // Function to read and update the content of the file
 function fetchData() {
