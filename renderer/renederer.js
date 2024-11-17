@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { spawn } = require('child_process'); // Add this line
 
 // Resolve file path relative to the project root
 const filePath = path.join(__dirname, '/file.txt'); // Ensure file.txt is in the correct directory
@@ -41,7 +42,33 @@ function showNotification(message) {
     // Play the alert sound
     alertSound.play();
 }
+// Function to execute Python scripts
+function executePythonScript(scriptName) {
+    const scriptPath = path.join(__dirname, '..', `${scriptName}-nav.py`);
 
+    const pythonProcess = spawn('python', [scriptPath]);
+
+    pythonProcess.stdout.on('data', (data) => {
+        console.log(`${scriptName}-nav.py stdout: ${data}`);
+    });
+
+    pythonProcess.stderr.on('data', (data) => {
+        console.error(`${scriptName}-nav.py stderr: ${data}`);
+    });
+
+    pythonProcess.on('close', (code) => {
+        console.log(`${scriptName}-nav.py process exited with code ${code}`);
+    });
+}
+
+// Add event listeners for the buttons
+document.getElementById('youtube-btn').addEventListener('click', () => {
+    executePythonScript('youtube');
+});
+
+document.getElementById('tiktok-btn').addEventListener('click', () => {
+    executePythonScript('tiktok');
+});
 // Function to read and update the content of the file
 function fetchData() {
     fs.readFile(filePath, 'utf-8', (err, data) => {
