@@ -6,8 +6,10 @@ app.disableHardwareAcceleration();
 
 function createWindow() {
     const win = new BrowserWindow({
-        width: 800,
+        width: 720,
         height: 600,
+        x: 0,                         // Position at the left edge of the screen
+        y: 0,
         webPreferences: {
             preload: path.join(__dirname, 'renderer/preload.js'),
             contextIsolation: false, // Allows the use of require in renderer.js
