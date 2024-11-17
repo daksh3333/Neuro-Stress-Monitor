@@ -23,26 +23,34 @@ unfocused_count = 0
 
 # Path to the `file.txt`
 file_path = os.path.join(os.path.dirname(__file__), "renderer", "file.txt")
-
 def show_browser_notification(driver, title, message):
     """
     Display a notification directly in the browser using the Notification API.
+    Falls back to `alert` if notifications are not supported or denied.
     """
     script = f"""
-    if (Notification.permission === "granted") {{
-        var notification = new Notification("{title}", {{
-            body: "{message}",
-            icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"
-        }});
-    }} else if (Notification.permission !== "denied") {{
-        Notification.requestPermission().then(permission => {{
-            if (permission === "granted") {{
-                var notification = new Notification("{title}", {{
-                    body: "{message}",
-                    icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"
-                }});
-            }}
-        }});
+    if (typeof Notification !== "undefined") {{
+        if (Notification.permission === "granted") {{
+            var notification = new Notification("{title}", {{
+                body: "{message}",
+                icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"
+            }});
+        }} else if (Notification.permission !== "denied") {{
+            Notification.requestPermission().then(permission => {{
+                if (permission === "granted") {{
+                    var notification = new Notification("{title}", {{
+                        body: "{message}",
+                        icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"
+                    }});
+                }} else {{
+                    alert("{title}: {message}");
+                }}
+            }});
+        }} else {{
+            alert("{title}: {message}");
+        }}
+    }} else {{
+        alert("{title}: {message}");
     }}
     """
     driver.execute_script(script)
