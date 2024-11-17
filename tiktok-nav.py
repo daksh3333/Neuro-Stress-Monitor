@@ -29,24 +29,20 @@ unfocused_count = 0
 
 # Path to the `file.txt`
 file_path = os.path.join(os.path.dirname(__file__), "renderer", "file.txt")
-
 def show_browser_notification(driver, title, message):
     """
     Display a notification directly in the browser using the Notification API.
     Falls back to a custom modal if notifications are not supported or denied.
     Automatically closes the notification after 2 seconds.
     """
-    # Ensure title and message are properly escaped for JavaScript
-    title_js = json.dumps(title)
-    message_js = json.dumps(message)
-
-    script = f"""
-    (function() {{
-        function createCustomModal(title, message) {{
+    script = '''
+    (function(title, message) {
+        function createCustomModal(modalTitleText, modalMessageText) {
             // Check if the modal already exists
-            if (document.getElementById('custom-modal')) {{
-                document.getElementById('custom-modal').remove();
-            }}
+            var existingModal = document.getElementById('custom-modal');
+            if (existingModal) {
+                existingModal.remove();
+            }
 
             // Create modal elements
             var modal = document.createElement('div');
@@ -68,12 +64,15 @@ def show_browser_notification(driver, title, message):
             modalContent.style.borderRadius = '5px';
             modalContent.style.textAlign = 'center';
             modalContent.style.maxWidth = '80%';
+            modalContent.style.color = '#000';  // Ensure text color is black
 
             var modalTitle = document.createElement('h2');
-            modalTitle.innerText = title;
+            modalTitle.innerText = modalTitleText;
+            modalTitle.style.color = '#000';  // Set text color to black
 
             var modalMessage = document.createElement('p');
-            modalMessage.innerText = message;
+            modalMessage.innerText = modalMessageText;
+            modalMessage.style.color = '#000';  // Set text color to black
 
             modalContent.appendChild(modalTitle);
             modalContent.appendChild(modalMessage);
@@ -81,41 +80,42 @@ def show_browser_notification(driver, title, message):
             document.body.appendChild(modal);
 
             // Auto-close the modal after 2 seconds
-            setTimeout(function() {{
-                if (modal) {{
+            setTimeout(function() {
+                var modal = document.getElementById('custom-modal');
+                if (modal) {
                     modal.remove();
-                }}
-            }}, 2000);
-        }}
+                }
+            }, 2000);
+        }
 
-        if (typeof Notification !== "undefined") {{
-            if (Notification.permission === "granted") {{
-                var notification = new Notification({title_js}, {{
-                    body: {message_js},
+        if (typeof Notification !== "undefined") {
+            if (Notification.permission === "granted") {
+                var notification = new Notification(title, {
+                    body: message,
                     icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"
-                }});
-                setTimeout(function() {{ notification.close(); }}, 2000);
-            }} else if (Notification.permission !== "denied") {{
-                Notification.requestPermission().then(permission => {{
-                    if (permission === "granted") {{
-                        var notification = new Notification({title_js}, {{
-                            body: {message_js},
+                });
+                setTimeout(function() { notification.close(); }, 2000);
+            } else if (Notification.permission !== "denied") {
+                Notification.requestPermission().then(function(permission) {
+                    if (permission === "granted") {
+                        var notification = new Notification(title, {
+                            body: message,
                             icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"
-                        }});
-                        setTimeout(function() {{ notification.close(); }}, 2000);
-                    }} else {{
-                        createCustomModal({title_js}, {message_js});
-                    }}
-                }});
-            }} else {{
-                createCustomModal({title_js}, {message_js});
-            }}
-        }} else {{
-            createCustomModal({title_js}, {message_js});
-        }}
-    }})();
-    """
-    driver.execute_script(script)
+                        });
+                        setTimeout(function() { notification.close(); }, 2000);
+                    } else {
+                        createCustomModal(title, message);
+                    }
+                });
+            } else {
+                createCustomModal(title, message);
+            }
+        } else {
+            createCustomModal(title, message);
+        }
+    })(arguments[0], arguments[1]);
+    '''
+    driver.execute_script(script, title, message)
 
 try:
     # Step 1: Go to TikTok
