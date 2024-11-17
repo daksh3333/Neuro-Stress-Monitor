@@ -7,10 +7,10 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from tkinter import Tk  # To get screen dimensions
 
 # Set up Chrome options
 chrome_options = Options()
-chrome_options.add_argument("--start-maximized")  # Start browser maximized
 chrome_options.add_argument("--disable-notifications")  # Disable native pop-ups
 
 # Path to your chromedriver executable
@@ -23,12 +23,28 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 # Initialize ActionChains for keyboard interactions
 actions = ActionChains(driver)
 
+# Set the browser window to 50% of the screen width and position it on the right
+def set_browser_position(driver):
+    # Get the screen width and height
+    root = Tk()
+    root.withdraw()  # Hide the Tkinter window
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+
+    # Calculate window dimensions and position
+    window_width = screen_width // 2  # 50% of the screen width
+    window_height = screen_height  # Full screen height
+    window_x = screen_width // 2  # Start at the middle of the screen (right side)
+    window_y = 0  # Start at the top of the screen
+
+    # Set the window size and position
+    driver.set_window_rect(window_x, window_y, window_width, window_height)
+    print(f"Browser positioned at x={window_x}, y={window_y}, width={window_width}, height={window_height}")
+
 # Initialize counts
 focused_count = 0
 unfocused_count = 0
-
-# Path to the `file.txt`
-file_path = os.path.join(os.path.dirname(__file__), "renderer", "file.txt")
+# Display a notification directly in the browser using the Notification API
 def show_browser_notification(driver, title, message):
     """
     Display a notification directly in the browser using the Notification API.
@@ -117,7 +133,17 @@ def show_browser_notification(driver, title, message):
     '''
     driver.execute_script(script, title, message)
 
+# Initialize counts
+focused_count = 0
+unfocused_count = 0
+
+# Path to the `file.txt`
+file_path = os.path.join(os.path.dirname(__file__), "renderer", "file.txt")
+
 try:
+    # Set browser position
+    set_browser_position(driver)
+
     # Step 1: Go to TikTok
     driver.get("https://www.tiktok.com/foryou")
     print("Navigated to TikTok.")
