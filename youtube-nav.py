@@ -32,7 +32,7 @@ def show_browser_notification(driver, title, message):
     if (Notification.permission === "granted") {{
         var notification = new Notification("{title}", {{
             body: "{message}",
-            icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"  // Optional: Use a custom icon
+            icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"
         }});
     }} else if (Notification.permission !== "denied") {{
         Notification.requestPermission().then(permission => {{
@@ -44,7 +44,7 @@ def show_browser_notification(driver, title, message):
             }}
         }});
     }}
-
+    """
     driver.execute_script(script)
 
 try:
@@ -79,8 +79,7 @@ try:
 
     # Step 4: Locate the "Next video" button and interact
     try:
-        next_video_button = driver.find_element(By.CSS_SELECTOR,
-                                                "button[aria-label='Next video']")  # Locate using aria-label
+        next_video_button = driver.find_element(By.CSS_SELECTOR, "button[aria-label='Next video']")
 
         # Highlight the Next video button
         driver.execute_script("arguments[0].style.border='3px solid red'", next_video_button)
@@ -115,7 +114,6 @@ try:
                 # Show congratulatory notification
                 title = "Great Job!"
                 message = "Congratulations! You are being focused. Keep up the pace!"
-                print(message)
                 show_browser_notification(driver, title, message)
         elif status == "Unfocused":
             unfocused_count += 1
@@ -124,7 +122,6 @@ try:
                 # Show warning notification
                 title = "Attention!"
                 message = "You are not focused. The video will be closed soon if you do not focus."
-                print(message)
                 show_browser_notification(driver, title, message)
             elif unfocused_count == 2:
                 # Close the video/browser
