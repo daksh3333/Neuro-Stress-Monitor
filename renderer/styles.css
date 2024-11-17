@@ -66,11 +66,11 @@ body {
     left: 50%;
     transform: translateX(-50%); /* Adjust for the container's width */
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 #youtube-btn {
-    background-image: url('../yt-image.png'); /* Set the image as the background */
+    background-image: url('../src/yt-image.png'); /* Set the image as the background */
     background-size: cover;      
     background-position: center;     
     background-repeat: no-repeat; 
@@ -87,7 +87,7 @@ body {
 }
 
 #tiktok-btn {
-    background-image: url('../tk-image.png'); /* Set the image as the background */
+    background-image: url('../src/tk-image.png'); /* Set the image as the background */
     background-size: cover;      
     background-position: center;     
     background-repeat: no-repeat; 
