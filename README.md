@@ -15,9 +15,9 @@ See our devpost [Neuro Focus Monitor](https://devpost.com/software/neuro-stress-
 
 
 ## ✨ About
-- **Detection** Detects brain waves in eeg frequency range (0-50 Hz).
-- **Filtering** 
-- **Notifications** when focus levels exceed predefined thresholds.
+- **Brain wave monitoring** Detects brain waves using BioAmp EXG Pill
+- **Filtering for stress** Filters EXG signals into brain wave frequency region (0-50 Hz)
+- **Notifications** when filtered signals exit beta frequency range (14-40 Hz).
 - **Sound alerts** for real-time focus warnings.
 - Integration of hardware and software to promote better focus management.
 
