@@ -19,7 +19,7 @@ See our devpost [Neuro Focus Monitor](https://devpost.com/software/neuro-stress-
 - **Filtering for stress** Filters EXG signals into brain wave frequency region (0-50 Hz)
 - **Notifications** when filtered signals exit beta frequency range (14-40 Hz).
 - **Sound alerts** for real-time focus warnings.
-- Integration of hardware and software to promote better focus management.
+
 
 
 
@@ -83,6 +83,7 @@ Neuro-focus-Monitor/
 ## Code execution guide
 ```
 pip install -r requirements.txt
+
 python3 youtube-nav.py (for now it this is the command)
 npm install dotenv
 
