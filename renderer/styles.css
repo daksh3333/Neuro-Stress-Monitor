@@ -15,30 +15,11 @@ body {
     text-align: center;
     margin: 0;
     padding: 20px;
-    color: #d0d0d0; 
+    color: #fffefe; 
     position: relative;
     background: none; 
 }
 
-/* Main header styling */
-h1 {
-    margin-top: 20px;
-    font-size: 2.5rem;
-    color: #3a3b3f; /* Light yellow from the palette */
-}
-
-/* Canvas styling for charts */
-canvas {
-    display: block;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 800px;
-    height: 400px;
-    background-color: #3a3b3f; /* Dark blue-gray for the canvas */
-    border: 2px solid #616377; /* Medium gray-blue border for contrast */
-    border-radius: 15px; /* Rounded corners for a polished look */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7); /* Strong shadow effect */
-}
 
 /* Notification styling */
 .notification {
