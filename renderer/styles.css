@@ -1,26 +1,86 @@
+/* General body styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     text-align: center;
     margin: 0;
     padding: 20px;
-    background-color: #1e1e1e; /* Dark background */
-    color: #f0f0f0; /* Light text */
+    background-color: #2c2d31; /* Dark gray-blue background */
+    color: #d0d0d0; /* Softer text color for readability */
 }
 
+/* Main header styling */
 h1 {
     margin-top: 20px;
-    font-size: 2rem;
-    color: #f0f0f0;
+    font-size: 2.5rem;
+    color: #f4f3ce; /* Light yellow from the palette */
 }
 
+/* Canvas styling for charts */
 canvas {
     display: block;
     margin: 20px auto;
     width: 90%;
     max-width: 800px;
     height: 400px;
-    background-color: #2e2e2e;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    background-color: #3a3b3f; /* Dark blue-gray for the canvas */
+    border: 2px solid #616377; /* Medium gray-blue border for contrast */
+    border-radius: 15px; /* Rounded corners for a polished look */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7); /* Strong shadow effect */
+}
+
+/* Notification styling */
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background-color: #00C1D4; /* Bright cyan for notifications */
+    color: #EEEEEE; /* Light text for contrast */
+    padding: 20px 40px;
+    border-radius: 12px; /* Rounded corners for a modern look */
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Dark shadow for depth */
+    z-index: 1000; /* Ensures it appears above all other elements */
+    animation: spawnCenter 0.5s ease-out, fadeOut 6s ease-in forwards; /* Subtle pulse with fade effect */
+}
+
+/* Spawn in the center smoothly */
+@keyframes spawnCenter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8); /* Start smaller */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1); /* Grow to normal size */
+    }
+}
+
+/* Fade out after 6 seconds */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Button styling */
+button {
+    background-color: #d4d636; /* Vibrant yellow for buttons */
+    color: #2c2d31; /* Dark background for text contrast */
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #b2b82a; /* Slightly darker yellow on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }

@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Resolve file path relative to the project root
-const filePath = path.join(__dirname, '/file.txt'); // Go one directory up to find file.txt
+const filePath = path.join(__dirname, '/file.txt'); // Ensure file.txt is in the correct directory
 
 // Create an audio element for the alert sound
 const alertSound = new Audio(path.join(__dirname, '/alert.mp3'));
@@ -11,21 +11,26 @@ const alertSound = new Audio(path.join(__dirname, '/alert.mp3'));
 let unfocusedStartTime = null;
 const unfocusedThreshold = 10000; // 10 seconds in milliseconds
 
+// Quotes by David Goggins
+const gogginsQuotes = [
+    "Stay hard!",
+    "You don't know me, son!",
+    "It's not about winning, it's about being able to endure.",
+    "Suffering is the true test of life.",
+    "Be uncommon amongst uncommon people.",
+];
+let firstNotification = true; // Track if it's the first notification
+let quoteIndex = 0; // To cycle through Goggins quotes
+
 // Function to show notification
 function showNotification(message) {
     const notification = document.createElement('div');
+    notification.classList.add('notification');
     notification.textContent = message;
-    notification.style.position = 'fixed';
-    notification.style.bottom = '20px';
-    notification.style.right = '20px';
-    notification.style.backgroundColor = 'red';
-    notification.style.color = 'white';
-    notification.style.padding = '10px 20px';
-    notification.style.borderRadius = '5px';
-    notification.style.fontWeight = 'bold';
-    notification.style.zIndex = '1000';
 
-    document.body.appendChild(notification);
+    // Add the notification to the notification container
+    const notificationContainer = document.getElementById('notification-container');
+    notificationContainer.appendChild(notification);
 
     setTimeout(() => {
         notification.remove();
@@ -42,15 +47,23 @@ function fetchData() {
             console.error('Error reading file:', err);
             document.getElementById('content').innerText = 'Error loading data';
         } else {
-            console.log('File data:', data);
-            document.getElementById('content').innerText = data;
+            const trimmedData = data.trim();
+            console.log('File data:', trimmedData);
+            document.getElementById('content').innerText = `Current State: ${trimmedData}`;
 
             // Check for 'Unfocused' state
-            if (data.trim() === 'Unfocused') {
+            if (trimmedData === 'Unfocused') {
                 if (unfocusedStartTime === null) {
                     unfocusedStartTime = Date.now();
                 } else if (Date.now() - unfocusedStartTime >= unfocusedThreshold) {
-                    showNotification('You’ve been unfocused for a while. Take a break!');
+                    if (firstNotification) {
+                        showNotification('You’ve been unfocused for a while. Take a break!');
+                        firstNotification = false; // Disable first notification
+                    } else {
+                        // Show Goggins quote
+                        showNotification(gogginsQuotes[quoteIndex]);
+                        quoteIndex = (quoteIndex + 1) % gogginsQuotes.length; // Cycle through quotes
+                    }
                     unfocusedStartTime = null; // Reset after notification
                 }
             } else {
