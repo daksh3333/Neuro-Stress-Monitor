@@ -4,38 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neuro Stress Monitor</title>
-    <meta http-equiv="Content-Security-Policy"
-          content="default-src 'self';
-                   script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
-                   style-src 'self' 'unsafe-inline';
-                   connect-src 'self' http://localhost:5002;">
+
+    <!-- Include Chart.js and Adapter -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+
+
     <style>
       body {
         font-family: Arial, sans-serif;
         text-align: center;
         margin: 0;
         padding: 20px;
-        background-color: #1e1e1e;
-        color: #f0f0f0;
+        background-color: #121212;
+        color: white;
       }
 
+      h1 {
+        margin-top: 20px;
+        font-size: 2em;
+        color: whitesmoke;
+      }
 
       canvas {
         display: block;
         margin: 20px auto;
-        width: 90%;
-        max-width: 800px;
+        width: 800px;
         height: 400px;
-        background-color: #2e2e2e;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        border: 1px solid #62585848;
+        background-color: black;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
       }
     </style>
   </head>
   <body>
     <h1>Real-Time Stress Monitor</h1>
     <canvas id="stressChart"></canvas>
-    <script type="/module" src="./index.js"></script>
+    <script type="module" src="index.js"></script>
   </body>
 </html>
