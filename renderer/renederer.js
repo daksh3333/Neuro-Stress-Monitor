@@ -16,6 +16,8 @@ const gogginsQuotes = [
     "Stay hard!",
     "You don't know me, son!",
     "It's not about winning, it's about being able to endure.",
+    "Who's going to carry the boats?",
+    "And the logs?",
     "Suffering is the true test of life.",
     "Be uncommon amongst uncommon people.",
 ];

@@ -1,9 +1,12 @@
 import os
+import time
+import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 
 # Set up Chrome options
 chrome_options = Options()
@@ -17,12 +20,16 @@ chromedriver_path = "/Users/nothimofc/Documents/Neuro-Stress-Monitor/chromedrive
 service = Service(chromedriver_path)
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
+# Initialize ActionChains for keyboard interactions
+actions = ActionChains(driver)
+
 # Initialize counts
 focused_count = 0
 unfocused_count = 0
 
 # Path to the `file.txt`
 file_path = os.path.join(os.path.dirname(__file__), "renderer", "file.txt")
+
 def show_browser_notification(driver, title, message):
     """
     Display a notification directly in the browser using the Notification API.
@@ -30,7 +37,6 @@ def show_browser_notification(driver, title, message):
     Automatically closes the notification after 2 seconds.
     """
     # Ensure title and message are properly escaped for JavaScript
-    import json
     title_js = json.dumps(title)
     message_js = json.dumps(message)
 
@@ -112,33 +118,36 @@ def show_browser_notification(driver, title, message):
     driver.execute_script(script)
 
 try:
-    # Step 1: Go to YouTube
-    driver.get("https://www.youtube.com")
-    print("Navigated to YouTube.")
+    # Step 1: Go to TikTok
+    driver.get("https://www.tiktok.com/foryou")
+    print("Navigated to TikTok.")
 
     # Wait for the page to load
     time.sleep(5)
 
-    # Step 2: Locate the Shorts button and click it
+    # Accept cookies if prompted (TikTok may display a cookie consent dialog)
     try:
-        shorts_button = driver.find_element(By.XPATH, '//a[@title="Shorts"]')
-
-        # Highlight the Shorts button
-        driver.execute_script("arguments[0].style.border='3px solid red'", shorts_button)
-        print("Shorts button highlighted.")
-
-        # Wait for 2 seconds
-        time.sleep(2)
-
-        # Click the Shorts button
-        shorts_button.click()
-        print("Shorts button clicked.")
+        consent_button = driver.find_element(By.XPATH, '//button[contains(text(), "Accept all cookies")]')
+        consent_button.click()
+        print("Accepted cookies.")
     except Exception as e:
-        print(f"Error locating or interacting with the Shorts button: {e}")
-        driver.quit()
-        exit()
+        print("No cookie consent dialog found or error accepting cookies.")
 
-    # Step 3: Monitor "file.txt" every 10 seconds
+    # Wait a bit after accepting cookies
+    time.sleep(2)
+
+    # Optional: Close any pop-ups or modals (e.g., login prompts)
+    try:
+        close_button = driver.find_element(By.XPATH, '//button[@aria-label="Close"]')
+        close_button.click()
+        print("Closed pop-up modal.")
+    except Exception as e:
+        print("No pop-up modal found or error closing it.")
+
+    # Ensure the page is ready
+    time.sleep(2)
+
+    # Step 2: Start monitoring "file.txt" every 10 seconds
     while True:
         time.sleep(10)  # Wait for 10 seconds
 
@@ -165,13 +174,13 @@ try:
             focused_count = 0  # Reset focused count
 
             if unfocused_count == 1:
-                # First "Unfocused": Click the Next video button
+                # First "Unfocused": Go to the next video
                 try:
-                    next_video_button = driver.find_element(By.CSS_SELECTOR, "button[aria-label='Next video']")
-                    next_video_button.click()
-                    print("Next video button clicked.")
+                    # Simulate pressing the down arrow key
+                    actions.send_keys(Keys.ARROW_DOWN).perform()
+                    print("Pressed down arrow key to go to next video.")
                 except Exception as e:
-                    print(f"Error locating or interacting with the Next video button: {e}")
+                    print(f"Error pressing down arrow key: {e}")
             elif unfocused_count == 2:
                 # Second "Unfocused": Show a warning notification
                 title = "Attention!"
