@@ -1,16 +1,16 @@
 
 <a name=top></a>
 ## NATHACKS
-# # Neuro Focus Monitor
+# # Focus Boost
 
 
-See our devpost [Neuro Focus Monitor](https://devpost.com/software/neuro-stress-monitor)
+See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
 
 ## 📑 Summary
 
-**Neuro Focus Monitor** 
+**FocusBoost** 
 
-**Neuro focus Monitor** is a real-time focus detection tool that uses the BioAmp EXG Pill and Arduino to capture brain signals and notify the user when they are focused in an Electron-based application.
+**FocusBoost** is a real-time focus detection tool that uses the BioAmp EXG Pill and Arduino to capture brain signals and notify the user when they are focused in an Electron-based application, and chromium (for practical example like watching a youtube short).
 
 
 
@@ -38,7 +38,11 @@ See our devpost [Neuro Focus Monitor](https://devpost.com/software/neuro-stress-
   - Set up the elctron app by creating the renderer files: index(html/js), preload.js, styles.css. Also updated the package.json file and cleaned up other files
   - Dealt with troubleshooting and refinements, fixed GPU crashes through disabling GPU rendering. Debugged other issues so that the window would open properly. Resolved through developing a gitignore file. 
   - Tested window using mock data, used to test real-time visualization of the app. Refined the chart code for better visuals. 
-  - Improved other aspects of the project like helping with the arduino data processing, communicating aspects with teamates, cleaned and set up README.md with better setup instructions, and developed how to prompt notifications. 
+  - Improved other aspects of the project like helping with the arduino data processing, communicating aspects with teamates, cleaned and set up README.md with better setup instructions, and developed how to prompt notifications.
+
+## November 16
+- **Hasan**
+  - Implemented reading exg pill data to display notifications on chromium, decided by being focused or unfocused, and closing the page if the person remains unfocused
 
 
 ## 🔨 Tools
@@ -52,6 +56,7 @@ This project is built using the following tools and frameworks:
 * [Chart.js](https://www.chartjs.org/) - For real-time charting and data visualization.
 * [Electron.js](https://www.electronjs.org/) - For cross-platform desktop app development.
 * [Arduino IDE](https://www.arduino.cc/) - For coding and uploading firmware to the Arduino.
+* [Chromedriver](https://developer.chrome.com/docs/chromedriver/) - For chromium for youtube/tiktok functionalities
 
 ### Python Libraries
 
@@ -96,7 +101,6 @@ pip install -r requirements.txt
 python stress_monitor.py
 npm start
 python3 youtube-nav.py (for now it this is the command)
-npm install dotenv
 
 ```
 Make sure you’ve downloaded ChromeDriver:
@@ -110,10 +114,10 @@ Make sure you’ve downloaded ChromeDriver:
 
 * [Avery Bettesworth](https://github.com/Betts6430) - Computer engineer
 * [Daksh Sethi](https://github.com/daksh3333) - Software engineer
-* [Hasan Khan](https://osu.github.io/portfolio/) - Computer Scientist and Psychologist 
+* [Hasan Khan](https://osu.github.io/portfolio/) - Computer Scientist and Psychology Student
 * [Hassan Farooq Mohammed ](https://github.com/osu) - Computer Scientist
-* [Tatjana Golovin] - Neuro Scientist
-* [Varinder Singh] - Psychologist
+* [Tatjana Golovin](https://devpost.com/tatjana-golovin) - Neuroscience Student
+* [Varinder Singh](https://devpost.com/varinderjeetsingh311) - Psychology Student
 
 
 ## 📰 Notes
@@ -121,5 +125,9 @@ Make sure you’ve downloaded ChromeDriver:
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 * Use your own branch and pull request to main
+
+## Referrences
+
+
 
 [🔝 Back to Top](#top)
