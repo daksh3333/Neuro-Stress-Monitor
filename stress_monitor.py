@@ -27,7 +27,7 @@ def bandpass_filter(data, lowcut, highcut, fs, order=4):
     b, a = butter_bandpass(lowcut, highcut, fs, order=order)
     return filtfilt(b, a, data)
 
-# Determine if stressed based on beta wave power
+# Determine if focused based on beta wave power
 def is_brain_in_beta_region(data, lowcut, highcut, fs, threshold=0.5):
     filtered_data = bandpass_filter(data, lowcut, highcut, fs)
     power = np.mean(np.square(filtered_data))  # Compute signal power

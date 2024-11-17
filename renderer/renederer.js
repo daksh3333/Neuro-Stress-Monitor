@@ -4,11 +4,14 @@ const path = require('path');
 // Resolve file path relative to the project root
 const filePath = path.join(__dirname, '/file.txt'); // Go one directory up to find file.txt
 
-let unfocusedDuration = 0; // Tracks the duration of "Unfocused" state
-const CHECK_INTERVAL = 1000; // Check every second
-const NOTIFICATION_THRESHOLD = 10; // Threshold in seconds for "Unfocused"
+// Create an audio element for the alert sound
+const alertSound = new Audio(path.join(__dirname, '/alert.mp3'));
 
-// Function to show a notification
+// Variables to track unfocused state duration
+let unfocusedStartTime = null;
+const unfocusedThreshold = 10000; // 10 seconds in milliseconds
+
+// Function to show notification
 function showNotification(message) {
     const notification = document.createElement('div');
     notification.textContent = message;
@@ -26,7 +29,10 @@ function showNotification(message) {
 
     setTimeout(() => {
         notification.remove();
-    }, 5000); // Notification will disappear after 5 seconds
+    }, 5000); // Notification disappears after 5 seconds
+
+    // Play the alert sound
+    alertSound.play();
 }
 
 // Function to read and update the content of the file
@@ -39,17 +45,16 @@ function fetchData() {
             console.log('File data:', data);
             document.getElementById('content').innerText = data;
 
-            // Check if the value is "Unfocused"
-            if (data.trim() === "Unfocused") {
-                unfocusedDuration += CHECK_INTERVAL / 1000; // Increment duration
+            // Check for 'Unfocused' state
+            if (data.trim() === 'Unfocused') {
+                if (unfocusedStartTime === null) {
+                    unfocusedStartTime = Date.now();
+                } else if (Date.now() - unfocusedStartTime >= unfocusedThreshold) {
+                    showNotification('You’ve been unfocused for a while. Take a break!');
+                    unfocusedStartTime = null; // Reset after notification
+                }
             } else {
-                unfocusedDuration = 0; // Reset duration if not "Unfocused"
-            }
-
-            // Trigger notification if the duration exceeds the threshold
-            if (unfocusedDuration >= NOTIFICATION_THRESHOLD) {
-                showNotification("Alert: You have been unfocused for an extended period!");
-                unfocusedDuration = 0; // Reset to avoid repeated notifications
+                unfocusedStartTime = null; // Reset if not 'Unfocused'
             }
         }
     });
@@ -57,4 +62,4 @@ function fetchData() {
 
 // Fetch data initially and then refresh periodically
 fetchData();
-setInterval(fetchData, CHECK_INTERVAL); // Refresh every second
+setInterval(fetchData, 1000); // Refresh every second
