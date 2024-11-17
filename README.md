@@ -115,10 +115,10 @@ Make sure you’ve downloaded ChromeDriver:
 
 * [Avery Bettesworth](https://github.com/Betts6430) - Computer engineer
 * [Daksh Sethi](https://github.com/daksh3333) - Software engineer
-* [Hasan Khan](https://osu.github.io/portfolio/) - Computer Scientist and Psychologist 
+* [Hasan Khan](https://osu.github.io/portfolio/) - Computer Scientist and Psychology Student
 * [Hassan Farooq Mohammed ](https://github.com/osu) - Computer Scientist
-* [Tatjana Golovin] - Neuro Scientist
-* [Varinder Singh] - Psychologist
+* [Tatjana Golovin] - Neuroscience Student
+* [Varinder Singh] - Psychology Student
 
 
 ## 📰 Notes
