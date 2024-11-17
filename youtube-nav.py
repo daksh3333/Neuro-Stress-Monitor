@@ -8,7 +8,7 @@ import time
 # Set up Chrome options
 chrome_options = Options()
 chrome_options.add_argument("--start-maximized")  # Start browser maximized
-chrome_options.add_argument("--disable-notifications")  # Disable pop-ups
+chrome_options.add_argument("--disable-notifications")  # Disable native pop-ups
 
 # Path to your chromedriver executable
 chromedriver_path = "/Users/nothimofc/Documents/Neuro-Stress-Monitor/chromedriver"  # Update this with your chromedriver path
@@ -24,33 +24,27 @@ unfocused_count = 0
 # Path to the `file.txt`
 file_path = os.path.join(os.path.dirname(__file__), "renderer", "file.txt")
 
-def show_message_and_sound(driver, message, sound_url=None):
-    script = f'''
-    // Create the message overlay
-    var messageDiv = document.createElement('div');
-    messageDiv.style.position = 'fixed';
-    messageDiv.style.top = '20px';
-    messageDiv.style.left = '20px';
-    messageDiv.style.padding = '15px';
-    messageDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-    messageDiv.style.color = 'white';
-    messageDiv.style.fontSize = '20px';
-    messageDiv.style.zIndex = '9999';
-    messageDiv.style.borderRadius = '5px';
-    messageDiv.innerText = "{message}";
-    document.body.appendChild(messageDiv);
+def show_browser_notification(driver, title, message):
+    """
+    Display a notification directly in the browser using the Notification API.
+    """
+    script = f"""
+    if (Notification.permission === "granted") {{
+        var notification = new Notification("{title}", {{
+            body: "{message}",
+            icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"  // Optional: Use a custom icon
+        }});
+    }} else if (Notification.permission !== "denied") {{
+        Notification.requestPermission().then(permission => {{
+            if (permission === "granted") {{
+                var notification = new Notification("{title}", {{
+                    body: "{message}",
+                    icon: "https://cdn-icons-png.flaticon.com/512/633/633600.png"
+                }});
+            }}
+        }});
+    }}
 
-    // Remove the message after 5 seconds
-    setTimeout(function() {{
-        document.body.removeChild(messageDiv);
-    }}, 5000);
-
-    // Play sound if provided
-    {f"""
-    var audio = new Audio('{sound_url}');
-    audio.play();
-    """ if sound_url else ''}
-    '''
     driver.execute_script(script)
 
 try:
@@ -118,19 +112,20 @@ try:
             focused_count += 1
             unfocused_count = 0  # Reset unfocused count
             if focused_count % 3 == 0:
-                # Show congratulatory message
+                # Show congratulatory notification
+                title = "Great Job!"
                 message = "Congratulations! You are being focused. Keep up the pace!"
                 print(message)
-                show_message_and_sound(driver, message)
+                show_browser_notification(driver, title, message)
         elif status == "Unfocused":
             unfocused_count += 1
             focused_count = 0  # Reset focused count
             if unfocused_count == 1:
-                # Show warning notification with sound
+                # Show warning notification
+                title = "Attention!"
                 message = "You are not focused. The video will be closed soon if you do not focus."
                 print(message)
-                sound_url = 'https://www.myinstants.com/media/sounds/bell.mp3'  # Replace with a valid sound URL if needed
-                show_message_and_sound(driver, message, sound_url)
+                show_browser_notification(driver, title, message)
             elif unfocused_count == 2:
                 # Close the video/browser
                 print("Second 'Unfocused' detected. Closing the browser.")
