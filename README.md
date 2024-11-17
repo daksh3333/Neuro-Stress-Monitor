@@ -58,15 +58,16 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
   - stress_monitor.py prints if the subject is FOCUSED or UNFOCUSED as well as the percentage of how UNFOCUSED the subject is. Example output: Is Unfocused: False (True Percentage: 2.79%) 
 - **Daksh**
   - Set up push notifications and sound alerts in the Electron app. Implemented a system to dynamically display notifications for focus/unfocus states and integrated motivational quotes for repeated unfocused instances.
-  - Refined notification aesthetics to match a neutral theme with a bring blue tone for alerts, ensuring a visually cohesive interface.
+  - Refined notification aesthetics to match a neutral theme with a bright pink tone for alerts, ensuring a visually cohesive interface.
   - Enhanced the renderer functionality, modifying it to dynamically display the current state (e.g., "Current State: Focused/Unfocused") alongside real-time updates.
   - Debugged file read operations to ensure smooth integration with file.txt for displaying state changes accurately.
-  - Improved the styles.css file to align the app's visual theme with a modern, neutral mode-inspired look while fine-tuning animations for notifications.
+  - Improved the styles.css file to align the app's visual theme with a modern, neutral mode-inspired look while fine-tuning animations for notifications. Integrated video background functionality for a visually appealing application interface.
   - Reverted multiple files to resolve issues during testing and switched the frontend framework from JavaScript to React, paving the way for a more modular and scalable codebase. But then reverted back into HTML, CSS, and JavaScript for a better connection with backend.  
   - Connected the frontend to the backend, establishing seamless communication between the Electron app and the Arduino hardware for real-time data visualization and monitoring.
   - Tested the Arduino integration, focusing on how it receives and processes signals for seamless communication with the Electron app.
   - Updated and cleaned up README.md, adding contributions, software dependencies, and enhanced setup instructions.
->>>>>>> 1505fde3e458ca282e232dc52cd842981e9e874d
+  - Incorporated a dynamic notification system that includes motivational quotes by David Goggins for repeated unfocused states, creating an engaging user experience.
+  - Integrated video background functionality for a visually appealing application interface.
 
 
 ## 🔨 Tools
