@@ -47,11 +47,11 @@ function fetchData() {
     fs.readFile(filePath, 'utf-8', (err, data) => {
         if (err) {
             console.error('Error reading file:', err);
-            document.getElementById('content').innerText = 'Error loading data';
+            document.getElementById('state-header').innerText = 'Current State: Error loading data';
         } else {
             const trimmedData = data.trim();
             console.log('File data:', trimmedData);
-            document.getElementById('content').innerText = `Current State: ${trimmedData}`;
+            document.getElementById('state-header').innerText = `Current State: ${trimmedData}`;
 
             // Check for 'Unfocused' state
             if (trimmedData === 'Unfocused') {
