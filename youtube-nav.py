@@ -11,7 +11,7 @@ chrome_options.add_argument("--start-maximized")  # Start browser maximized
 chrome_options.add_argument("--disable-notifications")  # Disable native pop-ups
 
 # Path to your chromedriver executable
-chromedriver_path = "/Users/nothimofc/Documents/Neuro-Stress-Monitor/chromedriver"  # Update this with your chromedriver path
+chromedriver_path = "C:\\Users\\avery\\OneDrive\\Documents\\GitHub\\Neuro-Stress-Monitor\\chromedriver.exe"  # Update this with your chromedriver path
 
 # Initialize WebDriver
 service = Service(chromedriver_path)
@@ -118,7 +118,7 @@ try:
         if status == "Focused":
             focused_count += 1
             unfocused_count = 0  # Reset unfocused count
-            if focused_count % 3 == 0:
+            if focused_count % 2 == 0:
                 # Show congratulatory notification
                 title = "Great Job!"
                 message = "Congratulations! You are being focused. Keep up the pace!"
