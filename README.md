@@ -1,7 +1,7 @@
 
 <a name=top></a>
 ## NATHACKS
-# # FocusBoost
+## FocusBoost
 
 ![Focus Boost](https://raw.githubusercontent.com/your-username/your-repo/main/path-to-gif.gif)
 ![focusBoost (1)](https://github.com/user-attachments/assets/12a56211-5150-4627-b854-dec5d208a1f4)
@@ -33,19 +33,19 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
 
 ## Development Timeline
 ### November 14
-- **Daksh, and Hasan**
+- **Daksh and Hasan**
   - Started laying the groundwork for the project
 ### November 15
 - **Hasan**
   - Implemented barebones feature of the youtube selenium script to autoskip videos (Next step is to implement exg pill data for the skipping
 - **Daksh**
-  - Set up the elctron app by creating the renderer files: index(html/js), preload.js, styles.css. Also updated the package.json file and cleaned up other files
+  - Set up the electron app by creating the renderer files: index(html/js), preload.js, styles.css. Also updated the package.json file and cleaned up other files
   - Dealt with troubleshooting and refinements, fixed GPU crashes through disabling GPU rendering. Debugged other issues so that the window would open properly. Resolved through developing a gitignore file. 
   - Tested window using mock data, used to test real-time visualization of the app. Refined the chart code for better visuals. 
   - Improved other aspects of the project like helping with the arduino data processing, communicating aspects with teamates, cleaned and set up README.md with better setup instructions, and developed how to prompt notifications.
 - **Avery**
   - Connected BioAmp EXG Pill to Arduino to begin gathering brainwave signals. Wrote required code in Arduino IDE to begin the aquisition of data from the EXG Pill.
-  - Used byb spike recorder to test methods of recording signals to detect focus/stress. Decided on using the EXG as an EEG by connecting it to the forhead, targeting the frontal lobe. ECG data was simple to work with but not necessarily indicitave of focus/stress.
+  - Used byb spike recorder to test methods of recording signals to detect focus/stress. Decided on using the EXG as an EEG by connecting it to the forehead, targeting the frontal lobe. ECG data was simple to work with but not necessarily indicitave of focus/stress.
   - Began serial plotting raw EEG data in Arduino IDE to visualize and confirm accuracy.
   - Wrote code to transfer raw EEG data to python stress_monitor.py using pyserial module.
 ## November 16
@@ -59,7 +59,7 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
   - If 10% or more of the incoming signals, over the course of a minute, are OUTSIDE of the beta range, the subject is UNFOCUSED. Otherwise they are FOCUSED.
   - stress_monitor.py prints if the subject is FOCUSED or UNFOCUSED as well as the percentage of how UNFOCUSED the subject is. Example output:    Is Unfocused: False (True Percentage: 2.79%).
   - Tested and adjusted frequency ranges to accurately describe the subjects focus ranges.
-  - 
+    
 - **Daksh**
   - Set up push notifications and sound alerts in the Electron app. Implemented a system to dynamically display notifications for focus/unfocus states and integrated motivational quotes for repeated unfocused instances.
   - Refined notification aesthetics to match a neutral theme with a bright pink tone for alerts, ensuring a visually cohesive interface.
@@ -180,7 +180,7 @@ Make sure you’ve downloaded ChromeDriver:
 * [Daksh Sethi](https://github.com/daksh3333) - Software Engineering Student
 * [Hasan Khan](https://osu.github.io/portfolio/) - Computer Scientist and Psychology Student
 * [Hassan Farooq Mohammed ](https://github.com/osu) - Computer Scientist
-* [Tatjana Golovin](https://devpost.com/tatjana-golovin) - Neuroscience Student
+* [Tatjana Golovin](https://devpost.com/tatjana-golovin) - Neuroscientist
 * [Varinder Singh](https://devpost.com/varinderjeetsingh311) - Psychology Graduate
 
 
