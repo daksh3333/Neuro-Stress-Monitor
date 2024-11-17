@@ -101,7 +101,6 @@ pip install -r requirements.txt
 python stress_monitor.py
 npm start
 python3 youtube-nav.py (for now it this is the command)
-npm install dotenv
 
 ```
 Make sure you’ve downloaded ChromeDriver:
