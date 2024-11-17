@@ -45,10 +45,21 @@ See our devpost [Neuro Focus Monitor](https://devpost.com/software/neuro-stress-
 
 ### Software
 
-* [Brainflow](https://brainflow.org/)
-* [GitHub](https://www.github.com) - version control + project manager
-* [Chart.js](https://www.chartjs.org/) - for real-time charting
-* [Electron.js](https://www.electronjs.org/) - for cross-platform desktop app development
+This project is built using the following tools and frameworks:
+
+* [Brainflow](https://brainflow.org/) - Framework for biosignal acquisition and processing.
+* [GitHub](https://www.github.com) - Version control and project management.
+* [Chart.js](https://www.chartjs.org/) - For real-time charting and data visualization.
+* [Electron.js](https://www.electronjs.org/) - For cross-platform desktop app development.
+* [Arduino IDE](https://www.arduino.cc/) - For coding and uploading firmware to the Arduino.
+
+### Python Libraries
+
+The project uses the following Python libraries. Install them using `pip install` or include them in your `requirements.txt` file:
+
+* `selenium>=4.0.0` - For automated testing and interaction simulation.
+* `serial
+
 
 
 ### Hardware

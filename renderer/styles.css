@@ -3,39 +3,24 @@ body {
     text-align: center;
     margin: 0;
     padding: 20px;
-    background-color: #1e1e1e;
-    color: #f0f0f0;
+    background-color: #1e1e1e; /* Dark background */
+    color: #f0f0f0; /* Light text */
 }
 
 h1 {
+    margin-top: 20px;
     font-size: 2rem;
-    margin-bottom: 20px;
-    color: #ffcc00;
-}
-
-.notification {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ff4d4d;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-}
-
-#content {
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #2e2e2e;
     color: #f0f0f0;
-    border-radius: 10px;
+}
+
+canvas {
+    display: block;
+    margin: 20px auto;
+    width: 90%;
     max-width: 800px;
-    word-wrap: break-word;
+    height: 400px;
+    background-color: #2e2e2e;
+    border: 1px solid #ddd;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-    font-size: 1.2rem;
-    line-height: 1.6;
 }
