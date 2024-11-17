@@ -12,7 +12,8 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
 
 **FocusBoost** 
 
-**FocusBoost** is a real-time focus detection tool that uses the BioAmp EXG Pill and Arduino to capture brain signals and notify the user when they are focused in an Electron-based application, and chromium (for practical example like watching a youtube short).
+**FocusBoost** is a real-time focus detection tool that uses the BioAmp EXG Pill and Arduino to capture brain signals and notify the user when they are focused in an Electron-based application that monitors your focus levels in real-time using data from an Arduino. The application provides notifications and motivational alerts to help you maintain focus and productivity and over a chromium software (for practical example like watching a youtube short). 
+
 
 
 
@@ -45,6 +46,16 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
 ## November 16
 - **Hasan**
   - Implemented reading exg pill data to display notifications on chromium, decided by being focused or unfocused, and closing the page if the person remains unfocused
+- **Daksh**
+  - Set up push notifications and sound alerts in the Electron app. Implemented a system to dynamically display notifications for focus/unfocus states and integrated motivational quotes for repeated unfocused instances.
+  - Refined notification aesthetics to match a neutral theme with a bring blue tone for alerts, ensuring a visually cohesive interface.
+  - Enhanced the renderer functionality, modifying it to dynamically display the current state (e.g., "Current State: Focused/Unfocused") alongside real-time updates.
+  - Debugged file read operations to ensure smooth integration with file.txt for displaying state changes accurately.
+  - Improved the styles.css file to align the app's visual theme with a modern, neutral mode-inspired look while fine-tuning animations for notifications.
+  - Reverted multiple files to resolve issues during testing and switched the frontend framework from JavaScript to React, paving the way for a more modular and scalable codebase.
+  - Connected the frontend to the backend, establishing seamless communication between the Electron app and the Arduino hardware for real-time data visualization and monitoring.
+  - Tested the Arduino integration, focusing on how it receives and processes signals for seamless communication with the Electron app.
+  - Updated and cleaned up README.md, adding contributions, software dependencies, and enhanced setup instructions.
 
 
 ## 🔨 Tools
@@ -71,8 +82,8 @@ The project uses the following Python libraries. Install them using `pip install
 
 ### Hardware
 
-* Bioamp EXG pill
-* Arduino
+* Bioamp EXG pill for biosignal capture
+* Arduino board
 
 # FILE STRUCTURE
 ```
