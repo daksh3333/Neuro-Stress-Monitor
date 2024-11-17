@@ -51,11 +51,14 @@ See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
 - **Hasan**
 <<<<<<< HEAD
   - Implemented reading EXG pill data to display notifications on chromium, decided by being focused or unfocused, and closing the page if the person remains unfocused
+  - Implemented focus features into youtube shorts and tiktok videos to show an example of our notification feature/data analysis
 - **Avery**
   - Continued work on backend in stress_monitor.py by filtering raw EEG data by changing data into frequency domain and using scipy module to implement a bandpass filter for beta waves (14-30 Hz).
   - Made a function to check if the incoming signals are in the beta range based on the beta wave power.
   - If 10% or more of the incoming signals, over the course of a minute, are OUTSIDE of the beta range, the subject is UNFOCUSED. Otherwise they are FOCUSED.
-  - stress_monitor.py prints if the subject is FOCUSED or UNFOCUSED as well as the percentage of how UNFOCUSED the subject is. Example output: Is Unfocused: False (True Percentage: 2.79%) 
+  - stress_monitor.py prints if the subject is FOCUSED or UNFOCUSED as well as the percentage of how UNFOCUSED the subject is. Example output:    Is Unfocused: False (True Percentage: 2.79%).
+  - Tested and adjusted frequency ranges to accurately describe the subjects focus ranges.
+  - 
 - **Daksh**
   - Set up push notifications and sound alerts in the Electron app. Implemented a system to dynamically display notifications for focus/unfocus states and integrated motivational quotes for repeated unfocused instances.
   - Refined notification aesthetics to match a neutral theme with a bright pink tone for alerts, ensuring a visually cohesive interface.
@@ -121,6 +124,7 @@ Neuro-focus-Monitor/
 ├── README.md           # Documentation for the project
 ├── requirements.txt
 ├── stress_monitor.py
+├── tiktok-nav.py
 ├── youtube-nav.py
 
 ```
@@ -129,7 +133,6 @@ Neuro-focus-Monitor/
 pip install -r requirements.txt
 python stress_monitor.py
 npm start
-python3 youtube-nav.py (for now it this is the command)
 
 ```
 Make sure you’ve downloaded ChromeDriver:
