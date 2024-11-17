@@ -109,23 +109,50 @@ Neuro-focus-Monitor/
 │   ├── settings.json
 ├── ARDUINO
 │   ├── ARDUINO.ino
-├── renderer/             # Renderer process for the Electron app
-│   ├── alert.mp3
-    ├── file.txt
-    ├── index.html        # Frontend for the Electron app
-    ├── styles.css
-    ├── preload.js        # Preload script for secure communication
-    └── index.js         # Script to handle real-time visualization
-│   └── styles.css
-├── .gitignore
-├── chromedriver.exe
-├── main.js
-├── package.json          # Node.js configuration and dependencies
-├── README.md           # Documentation for the project
-├── requirements.txt
-├── stress_monitor.py
-├── tiktok-nav.py
-├── youtube-nav.py
+├── my-electron-app/               # Main Electron app directory
+│   ├── public/                    # Static files for React (used in Electron frontend)
+│   │   ├── favicon.ico
+│   │   ├── index.html             # Entry point for the Electron-rendered React app
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json          # Metadata for web app (optional for PWA)
+│   │   └── robots.txt
+│   ├── src/                       # Source files for React app
+│   │   ├── App.css
+│   │   ├── App.js                 # React app main component
+│   │   ├── App.test.js
+│   │   ├── index.css
+│   │   ├── index.js               # React app entry point
+│   │   ├── logo.svg
+│   │   ├── reportWebVitals.js     # Optional for performance tracking
+│   │   └── setupTests.js          # Optional for React tests
+│   ├── main.js                    # Electron main process script
+│   ├── package.json               # Dependencies and scripts for Electron app
+│   ├── README.md                  # Electron app-specific documentation
+│   └── node_modules/              # Dependencies (git ignored)
+├── renderer/                  # Electron renderer process
+│   ├── alert.mp3              # Sound file for alerts
+│   ├── file.txt               # File tracking focus state
+│   ├── index.html             # Electron-rendered HTML
+│   ├── preload.js             # Preload script for IPC communication
+│   ├── renederer.js           # Main script for Electron renderer logic
+│   └── styles.css   
+├── src/                           # General assets used across the project
+│   ├── eeg-image.png              # EEG visualization
+│   ├── focusBoost.mp4             # Background video for the app
+│   ├── tk-image.png               # Icon for TikTok functionality
+│   └── yt-image.png               # Icon for YouTube functionality
+├── venv/                          # Python virtual environment (should be git ignored)
+├── .gitignore                     # Ignore unnecessary files (e.g., __pycache__, node_modules)
+├── README.md                      # General project documentation
+├── chromedriver                   # ChromeDriver executable (permission adjusted)
+├── chromedriver.exe               # Windows ChromeDriver executable
+├── main.js                        # Main Electron process for legacy setup (if needed)
+├── package.json                   # Legacy Electron dependencies and scripts (if needed)
+├── requirements.txt               # Python dependencies
+├── stress_monitor.py              # Python script for monitoring stress
+├── tiktok-nav.py                  # TikTok navigation automation script
+└── youtube-nav.py                 # YouTube navigation automation script
 
 ```
 ## Code execution guide
