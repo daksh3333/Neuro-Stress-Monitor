@@ -128,6 +128,8 @@ Make sure you’ve downloaded ChromeDriver:
 
 ## Referrences
 
+*BioAmp EXG Pill Documentation (https://github.com/upsidedownlabs/BioAmp-EXG-Pill)
+*Serial communication between Python and Arduino (https://projecthub.arduino.cc/ansh2919/serial-communication-between-python-and-arduino-663756)
 
 
 [🔝 Back to Top](#top)
