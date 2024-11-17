@@ -122,6 +122,7 @@ Neuro-focus-Monitor/
 ├── README.md           # Documentation for the project
 ├── requirements.txt
 ├── stress_monitor.py
+├── tiktok-nav.py
 ├── youtube-nav.py
 
 ```
@@ -130,7 +131,6 @@ Neuro-focus-Monitor/
 pip install -r requirements.txt
 python stress_monitor.py
 npm start
-python3 youtube-nav.py (for now it this is the command)
 
 ```
 Make sure you’ve downloaded ChromeDriver:
