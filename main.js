@@ -1,8 +1,7 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
-// Disable GPU rendering
-app.commandLine.appendSwitch('disable-gpu');
+// Disable GPU acceleration
 app.disableHardwareAcceleration();
 
 function createWindow() {
@@ -11,8 +10,8 @@ function createWindow() {
         height: 600,
         webPreferences: {
             preload: path.join(__dirname, 'renderer/preload.js'),
-            nodeIntegration: false,
-            contextIsolation: true,
+            contextIsolation: false, // Allows the use of require in renderer.js
+            nodeIntegration: true, // Enables Node.js features
         },
     });
 

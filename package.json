@@ -3,15 +3,9 @@
     "version": "1.0.0",
     "main": "main.js",
     "scripts": {
-        "start": "electron ."
-    },
-    "dependencies": {
-        "chart.js": "^4.4.6",
-        "chartjs-adapter-date-fns": "^3.0.0",
-        "socket.io": "^4.8.1",
-        "socket.io-client": "^4.8.1"
+      "start": "electron ."
     },
     "devDependencies": {
-        "electron": "^27.3.11"
+      "electron": "^27.3.11"
     }
-}
+  }  
