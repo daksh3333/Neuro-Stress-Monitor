@@ -4,6 +4,7 @@
 # # FocusBoost
 
 ![Focus Boost](https://raw.githubusercontent.com/your-username/your-repo/main/path-to-gif.gif)
+![focusBoost (1)](https://github.com/user-attachments/assets/12a56211-5150-4627-b854-dec5d208a1f4)
 
 See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
 
