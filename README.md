@@ -129,8 +129,8 @@ Make sure you’ve downloaded ChromeDriver:
 
 <!--- put your links here --->
 
-* [Avery Bettesworth](https://github.com/Betts6430) - Computer engineering student
-* [Daksh Sethi](https://github.com/daksh3333) - Software engineering student
+* [Avery Bettesworth](https://github.com/Betts6430) - Computer Engineering Student
+* [Daksh Sethi](https://github.com/daksh3333) - Software Engineering Student
 * [Hasan Khan](https://osu.github.io/portfolio/) - Computer Scientist and Psychology Student
 * [Hassan Farooq Mohammed ](https://github.com/osu) - Computer Scientist
 * [Tatjana Golovin](https://devpost.com/tatjana-golovin) - Neuroscience Student
