@@ -1,16 +1,16 @@
 
 <a name=top></a>
 ## NATHACKS
-# # Neuro Focus Monitor
+# # Focus Boost
 
 
-See our devpost [Neuro Focus Monitor](https://devpost.com/software/neuro-stress-monitor)
+See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
 
 ## 📑 Summary
 
-**Neuro Focus Monitor** 
+**FocusBoost** 
 
-**Neuro focus Monitor** is a real-time focus detection tool that uses the BioAmp EXG Pill and Arduino to capture brain signals and notify the user when they are focused in an Electron-based application.
+**FocusBoost** is a real-time focus detection tool that uses the BioAmp EXG Pill and Arduino to capture brain signals and notify the user when they are focused in an Electron-based application, and chromium (for practical example like watching a youtube short).
 
 
 
@@ -56,6 +56,7 @@ This project is built using the following tools and frameworks:
 * [Chart.js](https://www.chartjs.org/) - For real-time charting and data visualization.
 * [Electron.js](https://www.electronjs.org/) - For cross-platform desktop app development.
 * [Arduino IDE](https://www.arduino.cc/) - For coding and uploading firmware to the Arduino.
+* [Chromedriver](https://developer.chrome.com/docs/chromedriver/) - For chromium for youtube/tiktok functionalities
 
 ### Python Libraries
 
