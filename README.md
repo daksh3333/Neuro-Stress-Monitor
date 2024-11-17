@@ -114,10 +114,10 @@ Make sure you’ve downloaded ChromeDriver:
 
 * [Avery Bettesworth](https://github.com/Betts6430) - Computer engineer
 * [Daksh Sethi](https://github.com/daksh3333) - Software engineer
-* [Hasan Khan](https://osu.github.io/portfolio/) - Computer Scientist and Psychologist 
+* [Hasan Khan](https://osu.github.io/portfolio/) - Computer Scientist and Psychology Student
 * [Hassan Farooq Mohammed ](https://github.com/osu) - Computer Scientist
-* [Tatjana Golovin] - Neuro Scientist
-* [Varinder Singh] - Psychologist
+* [Tatjana Golovin](https://devpost.com/tatjana-golovin) - Neuroscience Student
+* [Varinder Singh](https://devpost.com/varinderjeetsingh311) - Psychology Student
 
 
 ## 📰 Notes
@@ -125,5 +125,9 @@ Make sure you’ve downloaded ChromeDriver:
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 * Use your own branch and pull request to main
+
+## Referrences
+
+
 
 [🔝 Back to Top](#top)
