@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import time
+from tkinter import Tk  # To get screen dimensions dynamically
 
 # Set up Chrome options
 chrome_options = Options()
@@ -17,12 +18,31 @@ chromedriver_path = "/Users/nothimofc/Documents/Neuro-Stress-Monitor/chromedrive
 service = Service(chromedriver_path)
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
+# Function to set browser position to occupy 50% of the right side of the screen
+def set_browser_position(driver):
+    # Get the screen width and height
+    root = Tk()
+    root.withdraw()  # Hide the Tkinter window
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+
+    # Calculate window dimensions and position
+    window_width = screen_width // 2  # 50% of the screen width
+    window_height = screen_height  # Full screen height
+    window_x = screen_width // 2  # Start at the middle of the screen (right side)
+    window_y = 0  # Start at the top of the screen
+
+    # Set the window size and position
+    driver.set_window_rect(window_x, window_y, window_width, window_height)
+    print(f"Browser positioned at x={window_x}, y={window_y}, width={window_width}, height={window_height}")
+
 # Initialize counts
 focused_count = 0
 unfocused_count = 0
 
 # Path to the `file.txt`
 file_path = os.path.join(os.path.dirname(__file__), "renderer", "file.txt")
+
 def show_browser_notification(driver, title, message):
     """
     Display a notification directly in the browser using the Notification API.
@@ -112,6 +132,9 @@ def show_browser_notification(driver, title, message):
     driver.execute_script(script)
 
 try:
+    # Set browser position to 50% of the right side
+    set_browser_position(driver)
+
     # Step 1: Go to YouTube
     driver.get("https://www.youtube.com")
     print("Navigated to YouTube.")
