@@ -38,7 +38,11 @@ See our devpost [Neuro Focus Monitor](https://devpost.com/software/neuro-stress-
   - Set up the elctron app by creating the renderer files: index(html/js), preload.js, styles.css. Also updated the package.json file and cleaned up other files
   - Dealt with troubleshooting and refinements, fixed GPU crashes through disabling GPU rendering. Debugged other issues so that the window would open properly. Resolved through developing a gitignore file. 
   - Tested window using mock data, used to test real-time visualization of the app. Refined the chart code for better visuals. 
-  - Improved other aspects of the project like helping with the arduino data processing, communicating aspects with teamates, cleaned and set up README.md with better setup instructions, and developed how to prompt notifications. 
+  - Improved other aspects of the project like helping with the arduino data processing, communicating aspects with teamates, cleaned and set up README.md with better setup instructions, and developed how to prompt notifications.
+
+## November 16
+- **Hasan**
+  - Implemented reading exg pill data to display notifications on chromium, decided by being focused or unfocused, and closing the page if the person remains unfocused
 
 
 ## 🔨 Tools
