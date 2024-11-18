@@ -1,7 +1,7 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
-// Disable GPU acceleration
+// Disable GPU acceleration to prevent crashes
 app.disableHardwareAcceleration();
 
 function createWindow() {
