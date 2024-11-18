@@ -7,6 +7,7 @@
 ![focusBoost (1)](https://github.com/user-attachments/assets/12a56211-5150-4627-b854-dec5d208a1f4)
 
 See our devpost [FocusBoost](https://devpost.com/software/neuro-stress-monitor)
+Check out the demo on youtube [FocusBoost](https://youtu.be/1BXJl57HUnk?si=Ltc4ndslZQM0E7aO)
 
 ## 📑 Summary
 
