@@ -37,6 +37,10 @@ Check out the demo on youtube [FocusBoost](https://youtu.be/1BXJl57HUnk?si=Ltc4n
 - **Daksh and Hasan**
   - Started laying the groundwork for the project
 ### November 15
+- **Hassan**
+  - Conducted research on best practices for designing an Electron app frontend, focusing on UI/UX principles for a smooth and engaging user experience.
+  - Explored efficient ways to structure HTML, CSS, and JavaScript within the Electron framework for better scalability and maintainability.
+  - Studied real-time data visualization techniques, ensuring seamless integration with the backend to display focus/unfocus states dynamically.
 - **Hasan**
   - Implemented barebones feature of the youtube selenium script to autoskip videos (Next step is to implement exg pill data for the skipping
 - **Daksh**
@@ -51,7 +55,6 @@ Check out the demo on youtube [FocusBoost](https://youtu.be/1BXJl57HUnk?si=Ltc4n
   - Wrote code to transfer raw EEG data to python stress_monitor.py using pyserial module.
 ## November 16
 - **Hasan**
-<<<<<<< HEAD
   - Implemented reading EXG pill data to display notifications on chromium, decided by being focused or unfocused, and closing the page if the person remains unfocused
   - Implemented focus features into youtube shorts and tiktok videos to show an example of our notification feature/data analysis
 - **Avery**
@@ -60,7 +63,12 @@ Check out the demo on youtube [FocusBoost](https://youtu.be/1BXJl57HUnk?si=Ltc4n
   - If 10% or more of the incoming signals, over the course of a minute, are OUTSIDE of the beta range, the subject is UNFOCUSED. Otherwise they are FOCUSED.
   - stress_monitor.py prints if the subject is FOCUSED or UNFOCUSED as well as the percentage of how UNFOCUSED the subject is. Example output:    Is Unfocused: False (True Percentage: 2.79%).
   - Tested and adjusted frequency ranges to accurately describe the subjects focus ranges.
-    
+- **Hassan**
+  - Designed and built the frontend for the Electron app, ensuring a responsive and user-friendly interface.
+  - Developed the layout and UI components using HTML, CSS, and JavaScript, integrating styles for a cohesive design.
+  - Worked on styling and the overall user experience.
+  - Ensured seamless integration with the backend, making sure that real-time updates from the Arduino data were reflected in the UI.
+  - Assisted in debugging UI-related issues, testing different resolutions, and ensuring a smooth experience across devices.
 - **Daksh**
   - Set up push notifications and sound alerts in the Electron app. Implemented a system to dynamically display notifications for focus/unfocus states and integrated motivational quotes for repeated unfocused instances.
   - Refined notification aesthetics to match a neutral theme with a bright pink tone for alerts, ensuring a visually cohesive interface.
@@ -87,7 +95,9 @@ Check out the demo on youtube [FocusBoost](https://youtu.be/1BXJl57HUnk?si=Ltc4n
   - Conducted final testing and debugging of both frontend and backend systems to ensure 
 seamless integration and reliable performance during the demonstration.
   - Organized and streamlined the project repository, removing unnecessary files and updating documentation for clarity and future scalability.
-
+- **Hassan**
+  - Refined the UI/UX of the Electron app, ensuring better layout consistency, readability, and responsiveness.
+  - Worked on fixing minor styling and alignment issues in the frontend to enhance the overall user experience.
 
 ## 🔨 Tools
 
